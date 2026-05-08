@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pacific Islander Ecosystem — Manumental</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0B0B09;
+    --surface:   #141412;
+    --surface-2: #1C1C19;
+    --gold:      #C8972E;
+    --gold-lt:   #D9AA4A;
+    --gold-dim:  #7A5C1A;
+    --white:     #F2EDE5;
+    --muted:     #7A7570;
+    --border:    rgba(200,151,46,0.18);
+    --border-dim: rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── MOTIF ── */
+
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(11,11,9,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-dim);
+    padding: 1rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; }
+  .nav-mark {
+    width: 34px; height: 34px; position: relative; flex-shrink: 0;
+  }
+  .nav-mark svg { width: 100%; height: 100%; }
+  .nav-name { font-size: 14px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+  .nav-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+    padding: 8px 20px; border-radius: 2px;
+    background: transparent; color: var(--gold);
+    border: 0.5px solid var(--gold); cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .section-h {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 400; line-height: 1.15;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .section-h span { color: var(--gold); }
+  .section-sub {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    max-width: 540px; margin-bottom: 2rem;
+  }
+
+  /* ── GOLD RULE ── */
+  .gold-rule { height: 1px; background: var(--border); margin: 0; }
+  .gold-rule-thick { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 6rem 2.5rem 5rem;
+    min-height: 85vh; display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+
+  .hero-badges { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border: 0.5px solid var(--border);
+    border-radius: 1px; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .badge::before { content: '◇'; font-size: 8px; color: var(--gold); }
+  .hero-h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(40px, 7vw, 78px);
+    font-weight: 700; line-height: 1.0;
+    color: var(--white); margin-bottom: 0.1em;
+    max-width: 700px;
+  }
+  .hero-h1 .gold { color: var(--gold); }
+  .hero-tagline {
+    font-size: 15px; color: var(--muted); margin: 1.5rem 0 2.5rem;
+    max-width: 480px; line-height: 1.7;
+    font-weight: 300; letter-spacing: 0.01em;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-gold {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 28px; background: var(--gold); color: var(--bg);
+    border: none; border-radius: 2px; cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-gold:hover { opacity: 0.88; }
+  .btn-outline {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 12px 28px; background: transparent; color: var(--muted);
+    border: 0.5px solid var(--border-dim); border-radius: 2px; cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 5rem; flex-wrap: wrap;
+    padding-top: 2rem; border-top: 0.5px solid var(--border-dim);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 400; color: var(--gold);
+  }
+  .stat-lbl { font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.04em; }
+
+  /* ── VISION ── */
+  .vision-section { padding: 5rem 2.5rem; }
+  .vision-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 400; line-height: 1.55;
+    color: var(--white); font-style: italic;
+    max-width: 680px; margin-bottom: 1rem;
+    padding-left: 1.75rem;
+    border-left: 2px solid var(--gold);
+  }
+  .vision-attr { font-size: 12px; color: var(--muted); padding-left: 1.75rem; letter-spacing: 0.05em; }
+
+  /* ── LEADERS ── */
+  .leaders-section { padding: 5rem 2.5rem; background: var(--surface); }
+  .leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px; border: 1px solid var(--border-dim);
+  }
+  .leader-card {
+    background: var(--surface); padding: 1.75rem 1.5rem;
+    border: 0.5px solid var(--border-dim);
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .leader-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: transparent; transition: background 0.25s;
+  }
+  .leader-card:hover { background: var(--surface-2); }
+  .leader-card:hover::before { background: var(--gold); }
+  .leader-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 500;
+    background: rgba(200,151,46,0.12);
+    color: var(--gold); margin-bottom: 1rem;
+    border: 0.5px solid var(--border);
+  }
+  .leader-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; line-height: 1.3; }
+  .leader-role { font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .leader-tag {
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold-dim); padding: 3px 8px;
+    border: 0.5px solid var(--gold-dim); border-radius: 1px; display: inline-block;
+  }
+  .leader-add {
+    background: transparent; border: 0.5px dashed rgba(200,151,46,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; min-height: 170px;
+  }
+  .leader-add:hover { background: rgba(200,151,46,0.04); }
+  .leader-add-icon { font-size: 24px; color: var(--gold-dim); }
+  .leader-add-txt { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* ── BRIDGE ── */
+  .bridge-section { padding: 5rem 2.5rem; }
+  .bridge-wrap {
+    display: grid; grid-template-columns: 1fr 80px 1fr;
+    align-items: center; gap: 0; max-width: 800px;
+  }
+  .bridge-node {
+    background: var(--surface); border: 0.5px solid var(--border-dim);
+    padding: 2rem 1.75rem; border-radius: 2px;
+  }
+  .bridge-node-flag {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .bridge-node-h { font-size: 16px; font-weight: 500; color: var(--white); margin-bottom: 1rem; }
+  .bridge-items { list-style: none; }
+  .bridge-items li {
+    font-size: 12px; color: var(--muted); padding: 4px 0;
+    display: flex; align-items: baseline; gap: 8px;
+    border-bottom: 0.5px solid var(--border-dim);
+  }
+  .bridge-items li:last-child { border-bottom: none; }
+  .bridge-items li::before { content: '—'; color: var(--gold-dim); flex-shrink: 0; font-size: 10px; }
+  .bridge-center {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 6px;
+  }
+  .bridge-star {
+    width: 28px; height: 28px;
+  }
+  .bridge-line { width: 0.5px; height: 20px; background: var(--border); }
+  .bridge-lbl { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+  .bridge-insight {
+    margin-top: 2rem; max-width: 800px;
+    padding: 1.25rem 1.75rem;
+    background: var(--surface);
+    border-left: 2px solid var(--gold);
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+  }
+  .bridge-insight strong { color: var(--white); font-weight: 500; }
+
+  /* ── EVENTS ── */
+  .events-section { padding: 5rem 2.5rem; background: var(--surface); }
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; }
+  .event-card {
+    background: var(--surface); border: 0.5px solid var(--border-dim);
+    overflow: hidden; transition: background 0.2s;
+  }
+  .event-card:hover { background: var(--surface-2); }
+  .event-header-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-dim));
+  }
+  .event-card-body { padding: 1.75rem 1.75rem; }
+  .event-card-date {
+    font-size: 10px; color: var(--gold); letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .event-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 400; color: var(--white);
+    line-height: 1.25; margin-bottom: 0.5rem;
+  }
+  .event-card-org { font-size: 11px; color: var(--muted); margin-bottom: 1rem; }
+  .event-card-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+  .event-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .event-tag {
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border: 0.5px solid var(--border-dim); color: var(--muted); border-radius: 1px;
+  }
+  .event-cta {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); background: none; border: none; cursor: pointer; padding: 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .event-cta::after { content: '→'; transition: transform 0.2s; }
+  .event-cta:hover::after { transform: translateX(4px); }
+  .event-coming {
+    background: transparent; border: 0.5px dashed rgba(200,151,46,0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 3rem 2rem; text-align: center; gap: 0.75rem; min-height: 280px;
+  }
+  .event-coming-h { font-size: 14px; color: var(--muted); }
+  .event-coming-sub { font-size: 12px; color: rgba(122,117,112,0.7); line-height: 1.6; max-width: 200px; }
+
+  /* ── THE VĀ ── */
+  .va-section { padding: 6rem 2.5rem; }
+  .va-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+  .va-meaning-block { }
+  .va-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 400; color: var(--gold);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .va-phonetic { font-size: 12px; color: var(--muted); margin-bottom: 1.25rem; letter-spacing: 0.06em; }
+  .va-definition {
+    font-size: 15px; color: var(--white); line-height: 1.75;
+    margin-bottom: 1rem; font-weight: 300;
+  }
+  .va-origin { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+  .va-who-h { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .va-who-list { list-style: none; }
+  .va-who-list li {
+    font-size: 13px; color: var(--muted); padding: 9px 0;
+    border-bottom: 0.5px solid var(--border-dim);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .va-who-list li::before { content: '◇'; font-size: 8px; color: var(--gold); flex-shrink: 0; }
+
+  .va-form-card {
+    background: var(--surface); border: 0.5px solid var(--border);
+    padding: 2.25rem 2rem; border-radius: 2px;
+  }
+  .va-form-h {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 0.35rem;
+  }
+  .va-form-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.6; }
+  label.fl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+  .fi {
+    width: 100%; font-size: 13px; padding: 10px 12px;
+    background: var(--bg); color: var(--white);
+    border: 0.5px solid rgba(255,255,255,0.1); border-radius: 2px;
+    outline: none; transition: border-color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .fi:focus { border-color: var(--gold); }
+  .fi::placeholder { color: var(--muted); }
+  select.fi { cursor: pointer; }
+  select.fi option { background: var(--surface); color: var(--white); }
+  .form-row { margin-bottom: 1rem; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
+  .form-submit {
+    width: 100%; margin-top: 0.5rem;
+    padding: 13px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--gold); color: var(--bg); border: none; border-radius: 2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: opacity 0.2s;
+  }
+  .form-submit:hover { opacity: 0.88; }
+  .form-privacy { font-size: 10px; color: var(--muted); text-align: center; margin-top: 10px; letter-spacing: 0.03em; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 0.5px solid var(--border-dim);
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 1rem;
+    position: relative; z-index: 1;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--muted); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 4rem 1.25rem 3rem; }
+    .vision-section, .leaders-section, .bridge-section, .events-section, .va-section { padding: 3.5rem 1.25rem; }
+    .bridge-wrap { grid-template-columns: 1fr; }
+    .bridge-center { flex-direction: row; padding: 0.75rem 0; }
+    .bridge-line { width: 20px; height: 0.5px; }
+    .va-grid { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem 1.25rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 32,30 2,30" fill="none" stroke="#C8972E" stroke-width="1.2"/>
+        <polygon points="17,10 26,28 8,28" fill="rgba(200,151,46,0.18)"/>
+        <line x1="17" y1="2" x2="17" y2="0" stroke="#C8972E" stroke-width="1"/>
+        <circle cx="17" cy="17" r="2" fill="#C8972E"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-name">Pacific Islander Ecosystem</div>
+      <div class="nav-sub">Manumental · Founded by Dr. Manu Muasau</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#vision">Vision</a>
+    <a href="#leaders">Leaders</a>
+    <a href="#events">Events</a>
+    <a href="#va">The Vā</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('va').scrollIntoView({behavior:'smooth'})">Join the Vā</button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-badges">
+    <span class="badge">Strength-Based</span>
+    <span class="badge">Culturally Grounded</span>
+    <span class="badge">Experiential</span>
+    <span class="badge">Community-Led</span>
+  </div>
+  <h1 class="hero-h1">
+    Built by<br>
+    our people.<br>
+    <span class="gold">For our people.</span>
+  </h1>
+  <p class="hero-tagline">
+    An expansive ecosystem to foster growth, connection, and shared success — from American Samoa to the mainland and beyond.
+  </p>
+  <div class="hero-actions">
+    <button class="btn-gold" onclick="document.getElementById('va').scrollIntoView({behavior:'smooth'})">Join the Vā — our network</button>
+    <button class="btn-outline" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">Upcoming events</button>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">1.4M+</div>
+      <div class="stat-lbl">Pacific Islanders in the U.S.</div>
+    </div>
+    <div>
+      <div class="stat-num">55K+</div>
+      <div class="stat-lbl">Samoan Americans nationwide</div>
+    </div>
+    <div>
+      <div class="stat-num">2026</div>
+      <div class="stat-lbl">Ecosystem launch</div>
+    </div>
+  </div>
+
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ── VISION ── -->
+<section class="vision-section" id="vision">
+  <div class="eyebrow">Founding vision</div>
+  <h2 class="section-h">The <span>opportunity</span></h2>
+  <p class="section-sub">Dr. Manu Muasau — former NFL athlete, Doctor of Psychology, and founder of Manumental</p>
+  <blockquote class="vision-quote">
+    "We believe in the extraordinary potential of our people and are developing an expansive ecosystem to foster growth, connection, and shared success. This initiative will open doors to unprecedented opportunities, providing resources and support to ignite the unique talents within our community."
+  </blockquote>
+  <p class="vision-attr">— Dr. Manu Muasau, Founder · Manumental</p>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ── LEADERS ── -->
+<section class="leaders-section" id="leaders">
+  <div class="eyebrow">Community leaders</div>
+  <h2 class="section-h">Voices at the <span>forefront</span></h2>
+  <p class="section-sub">Pacific Islander leaders across government, sport, culture, and community development in the United States</p>
+
+  <div class="leaders-grid">
+
+    <div class="leader-card">
+      <div class="leader-avatar">AA</div>
+      <div class="leader-name">Aumua Amata C. Radewagen</div>
+      <div class="leader-role">U.S. Representative, American Samoa · U.S. Congress</div>
+      <span class="leader-tag">Government</span>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-avatar">TP</div>
+      <div class="leader-name">Troy Polamalu</div>
+      <div class="leader-role">NFL Hall of Famer · Samoan American community advocate</div>
+      <span class="leader-tag">Sport & Advocacy</span>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-avatar">NT</div>
+      <div class="leader-name">Nainoa Thompson</div>
+      <div class="leader-role">Master Navigator · President, Polynesian Voyaging Society</div>
+      <span class="leader-tag">Culture & Heritage</span>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-avatar">MM</div>
+      <div class="leader-name">Marcus Mariota</div>
+      <div class="leader-role">NFL Quarterback · Entrepreneur · Samoan / Native Hawaiian</div>
+      <span class="leader-tag">Sport & Business</span>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-avatar">ET</div>
+      <div class="leader-name">Esera Tuaolo</div>
+      <div class="leader-role">Former NFL Player · Performing Artist · LGBTQ Advocate</div>
+      <span class="leader-tag">Advocacy & Arts</span>
+    </div>
+
+    <div class="leader-card leader-add" onclick="alert('Nomination coming soon')">
+      <div class="leader-add-icon">+</div>
+      <div class="leader-add-txt">Nominate a leader</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ── BRIDGE ── -->
+<section class="bridge-section" id="bridge">
+  <div class="eyebrow">The connection</div>
+  <h2 class="section-h">American Samoa <span>↔</span> Samoan Americans</h2>
+  <p class="section-sub">Two communities, one identity — bridging the homeland with the diaspora</p>
+
+  <div class="bridge-wrap">
+    <div class="bridge-node">
+      <div class="bridge-node-flag">American Samoa</div>
+      <div class="bridge-node-h">The Homeland</div>
+      <ul class="bridge-items">
+        <li>U.S. territory — ~56,000 residents</li>
+        <li>Rich fa'asamoa cultural foundation</li>
+        <li>Highest military service rate per capita</li>
+        <li>Limited federal program access</li>
+        <li>Emerging entrepreneurial base</li>
+        <li>Youth athletics pipeline</li>
+      </ul>
+    </div>
+    <div class="bridge-center">
+      <div class="bridge-line"></div>
+      <svg class="bridge-star" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="14,1 17,10 27,10 19,16 22,26 14,20 6,26 9,16 1,10 11,10" fill="none" stroke="#C8972E" stroke-width="1"/>
+        <circle cx="14" cy="14" r="2.5" fill="#C8972E" opacity="0.6"/>
+      </svg>
+      <div class="bridge-line"></div>
+      <div class="bridge-lbl">shared<br>vā</div>
+    </div>
+    <div class="bridge-node">
+      <div class="bridge-node-flag" style="color:var(--gold-lt)">Samoan Americans</div>
+      <div class="bridge-node-h">The Diaspora</div>
+      <ul class="bridge-items">
+        <li>55,000+ across the U.S. mainland</li>
+        <li>California, Hawaii, Utah as major hubs</li>
+        <li>Growing professional class</li>
+        <li>High rate of sports excellence</li>
+        <li>Cultural identity navigation</li>
+        <li>Capital & network access</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bridge-insight">
+    The Pacific Islander Ecosystem creates infrastructure for <strong>mutual uplift</strong> — channeling mainland networks, resources, and professional development back to American Samoa while honoring the homeland's cultural wisdom that sustains diaspora identity.
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ── EVENTS ── -->
+<section class="events-section" id="events">
+  <div class="eyebrow">Featured events</div>
+  <h2 class="section-h">Gather. Compete. <span>Lead.</span></h2>
+  <p class="section-sub">Where Pacific Islander athletes, leaders, and community builders convene</p>
+
+  <div class="events-grid">
+
+    <div class="event-card">
+      <div class="event-header-bar"></div>
+      <div class="event-card-body">
+        <div class="event-card-date">2026 · Location TBD</div>
+        <div class="event-card-title">Polynesian Athlete Summit</div>
+        <div class="event-card-org">Pacific Islander Ecosystem · Manumental</div>
+        <p class="event-card-desc">A landmark gathering bringing together Polynesian athletes, coaches, and leaders across collegiate and professional sport — exploring identity, mental performance, and community impact.</p>
+        <div class="event-tags">
+          <span class="event-tag">Athletics</span>
+          <span class="event-tag">Mental Performance</span>
+          <span class="event-tag">Leadership</span>
+          <span class="event-tag">Community</span>
+        </div>
+        <button class="event-cta">Express interest</button>
+      </div>
+    </div>
+
+    <div class="event-card event-coming">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="14,1 17,10 27,10 19,16 22,26 14,20 6,26 9,16 1,10 11,10" fill="none" stroke="#7A5C1A" stroke-width="1"/>
+      </svg>
+      <div class="event-coming-h">More events coming</div>
+      <p class="event-coming-sub">Community workshops, cultural forums, and professional development sessions launching in 2026.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule-thick"></div>
+
+<!-- ── THE VĀ ── -->
+<section class="va-section" id="va">
+  <div class="eyebrow">The Vā — Community Network</div>
+  <h2 class="section-h">Join the <span>living connection</span></h2>
+  <p class="section-sub">Add your name to the Pacific Islander Ecosystem's founding community</p>
+
+  <div class="va-grid">
+    <div class="va-meaning-block">
+      <div class="va-word">Vā</div>
+      <div class="va-phonetic">/ vā / &nbsp;·&nbsp; Samoan</div>
+      <p class="va-definition">The sacred, relational space between people. In Pacific Islander philosophy, the vā is not empty space but a living connection — the relationship itself, honoured and sustained by both parties.</p>
+      <p class="va-origin">Rooted in fa'asamoa — the Samoan way of life and its obligations of mutual care and community.</p>
+      <div class="va-who-h">Who joins the Vā?</div>
+      <ul class="va-who-list">
+        <li>Pacific Islander professionals and entrepreneurs</li>
+        <li>Current and former Pacific Islander athletes</li>
+        <li>Students and emerging community leaders</li>
+        <li>Educators, creatives, and advocates</li>
+        <li>American Samoans on island and stateside</li>
+        <li>Allies, partners, and community champions</li>
+      </ul>
+    </div>
+
+    <div class="va-form-card">
+      <div class="va-form-h">Add your name to the Vā</div>
+      <p class="va-form-sub">Be among the founding members of this growing Pacific Islander network. Your place is held. Your connection begins here.</p>
+
+      <div class="form-row-2">
+        <div class="form-row" style="margin-bottom:0">
+          <label class="fl">First name</label>
+          <input class="fi" type="text" placeholder="Manu">
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label class="fl">Last name</label>
+          <input class="fi" type="text" placeholder="Muasau">
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:1rem">
+        <label class="fl">Email address</label>
+        <input class="fi" type="email" placeholder="you@example.com">
+      </div>
+
+      <div class="form-row">
+        <label class="fl">Island heritage</label>
+        <select class="fi">
+          <option value="">Select your community</option>
+          <option>American Samoa</option>
+          <option>Western Samoa / Samoa</option>
+          <option>Tonga</option>
+          <option>Fiji</option>
+          <option>Hawaii / Native Hawaiian</option>
+          <option>Guam / Chamorro</option>
+          <option>Marshall Islands</option>
+          <option>Other Pacific Islander</option>
+          <option>Ally / Partner</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="fl">How would you describe yourself?</label>
+        <select class="fi">
+          <option value="">Select your primary role</option>
+          <option>Professional / Executive</option>
+          <option>Athlete (current)</option>
+          <option>Athlete (former)</option>
+          <option>Student / Emerging leader</option>
+          <option>Entrepreneur / Business owner</option>
+          <option>Educator / Academic</option>
+          <option>Community organizer</option>
+          <option>Creative / Artist</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="fl">City / State</label>
+        <input class="fi" type="text" placeholder="Atlanta, GA">
+      </div>
+
+      <button class="form-submit">Join the Vā →</button>
+      <p class="form-privacy">Your information stays within the Pacific Islander Ecosystem. We do not share or sell data.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 34 34" fill="none">
+      <polygon points="17,2 32,30 2,30" fill="none" stroke="#C8972E" stroke-width="1.2"/>
+      <circle cx="17" cy="17" r="2" fill="#C8972E"/>
+    </svg>
+    <span>© 2026 Pacific Islander Ecosystem · A Manumental Initiative · Dr. Manu Muasau</span>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+    <a href="#">Manumental.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
