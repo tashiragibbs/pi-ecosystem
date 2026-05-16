@@ -209,22 +209,6 @@
   .hero-head {
     font-size: clamp(56px, 9vw, 132px);
   }
-  /* Pasifika-decorated P — abstracted tatau pattern filling a single glyph.
-     Sail-cream base (matches surrounding type) + brass chevron/diamond band
-     overlay, clipped to text. Subtle but unmistakably patterned. */
-  .hero-head .p-pasifika {
-    background-color: var(--sail);
-    background-image:
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 36'><g fill='none' stroke='%230e1f2e' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><polyline points='2,8 12,2 22,8'/><polyline points='2,16 12,10 22,16'/><line x1='0' y1='19' x2='24' y2='19' stroke-width='1.1'/><polygon points='12,22 16,26 12,30 8,26' fill='%230e1f2e' fill-opacity='0.85' stroke-width='1.2'/><polygon points='2,22 4,26 2,30 0,26' stroke-width='1.1'/><polygon points='22,22 24,26 22,30 20,26' stroke-width='1.1'/><line x1='0' y1='33' x2='24' y2='33' stroke-width='1.1'/></g></svg>");
-    background-repeat: repeat;
-    background-size: 0.42em 0.62em;
-    -webkit-background-clip: text;
-            background-clip: text;
-    color: transparent;
-  }
-  @supports not (background-clip: text) {
-    .hero-head .p-pasifika { background: none; color: inherit; }
-  }
   .hero-sub {
     font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px);
     line-height: 1.35; color: var(--sail-dim); max-width: 720px;
@@ -541,7 +525,7 @@
 
     <h1 class="display hero-head" style="text-align: center;">
       <span class="italic">The</span><br>
-      <span class="p-pasifika">P</span>acific Island<br>
+      Pacific Island<br>
       <span class="brass italic">Ecosystem</span>
     </h1>
 
