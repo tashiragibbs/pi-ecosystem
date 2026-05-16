@@ -438,11 +438,17 @@
 
   /* ============ FOUNDER — tide ============ */
   .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  @media (max-width: 900px) { .founder-grid { grid-template-columns: 1fr; gap: 36px; } }
   .founder-img {
     aspect-ratio: 4/5; width: 100%;
     object-fit: cover; object-position: center top;
     border: 1px solid var(--sail-line);
+  }
+  @media (max-width: 900px) {
+    .founder-grid { grid-template-columns: 1fr; gap: 36px; justify-items: center; }
+    .founder-img { max-width: 320px; }
+  }
+  @media (max-width: 480px) {
+    .founder-img { max-width: 240px; }
   }
   .founder-name {
     font-family: var(--display); font-size: 44px; line-height: 1; font-weight: 400; color: var(--sail);
