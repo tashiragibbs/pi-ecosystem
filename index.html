@@ -1,715 +1,932 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pacific Islander Ecosystem — Manumental</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE — Pacific Island Ecosystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg:        #0B0B09;
-    --surface:   #141412;
-    --surface-2: #1C1C19;
-    --gold:      #C8972E;
-    --gold-lt:   #D9AA4A;
-    --gold-dim:  #7A5C1A;
-    --white:     #F2EDE5;
-    --muted:     #7A7570;
-    --border:    rgba(200,151,46,0.18);
-    --border-dim: rgba(255,255,255,0.07);
+    --abyss: #0e1f2e;
+    --abyss-2: #0a1822;
+    --tide: #1a3a4a;
+    --lagoon: #3a6b7a;
+    --lagoon-2: #4a7c8a;
+    --brass: #c8a96a;
+    --brass-2: #d4b87a;
+    --sail: #f4ede0;
+    --sail-2: #fbf6ea;
+    --sail-dim: rgba(244, 237, 224, 0.7);
+    --sail-fade: rgba(244, 237, 224, 0.5);
+    --sail-line: rgba(244, 237, 224, 0.18);
+    --sail-hair: rgba(244, 237, 224, 0.08);
+    --ink-dim: rgba(14, 31, 46, 0.7);
+    --ink-fade: rgba(14, 31, 46, 0.5);
+    --ink-line: rgba(14, 31, 46, 0.18);
+    --ink-hair: rgba(14, 31, 46, 0.08);
+    --display: 'Anton', 'Bebas Neue', Impact, sans-serif;
+    --serif: 'Inter', -apple-system, sans-serif; /* legacy alias — Inter italic now carries the italic accents */
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--abyss); color: var(--sail); font-family: var(--sans); }
+  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; }
 
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'DM Sans', system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-x: hidden;
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 56px; position: relative; }
+  @media (max-width: 720px) { .wrap { padding: 0 28px; } }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+    padding: 28px 0;
   }
-
-  /* ── MOTIF ── */
-
-
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(11,11,9,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border-dim);
-    padding: 1rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .brand {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--sail);
   }
-  .nav-brand { display: flex; align-items: center; gap: 12px; }
-  .nav-mark {
-    width: 34px; height: 34px; position: relative; flex-shrink: 0;
-  }
-  .nav-mark svg { width: 100%; height: 100%; }
-  .nav-name { font-size: 14px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
-  .nav-sub { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
+  .brand .b-mark { color: var(--brass); }
+  .nav-links { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sail-dim); }
+  .nav-links a:hover { color: var(--sail); }
   .nav-cta {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
-    padding: 8px 20px; border-radius: 2px;
-    background: transparent; color: var(--gold);
-    border: 0.5px solid var(--gold); cursor: pointer;
+    border: 1px solid var(--sail);
+    padding: 9px 16px;
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sail); background: transparent;
     transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--sail); color: var(--abyss); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ============ CHEVRON MOTIF ============ */
+  .chev-line { stroke: currentColor; stroke-width: 2; fill: none; }
+  .chev-stack {
+    display: flex; flex-direction: column; gap: 6px; align-items: flex-start;
+    color: var(--brass);
+  }
+  .chev-stack svg { width: 84px; height: 18px; }
+  .chev-stack svg:nth-child(1) { opacity: 0.25; }
+  .chev-stack svg:nth-child(2) { opacity: 0.5; }
+  .chev-stack svg:nth-child(3) { opacity: 0.75; }
+  .chev-stack svg:nth-child(4) { opacity: 1; }
+  .chev-stack svg:nth-child(5) { opacity: 1; }
+
+  /* ============ SECTION LOCKUP ============ */
+  .lockup {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+  .lockup-chevs {
+    display: flex; flex-direction: column; gap: 6px;
+    color: var(--brass);
+  }
+  .lockup-chevs svg { width: 56px; height: 16px; display: block; }
+  .lockup-chevs svg:first-child { opacity: 0.4; }
+  .lockup-divider { width: 1px; height: 78px; background: currentColor; opacity: 0.4; color: var(--brass); }
+  .lockup-titlewrap {
+    display: flex; flex-direction: column; gap: 12px;
+    min-width: 0;
+  }
+  .lockup-title {
+    font-family: var(--display); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.02em;
+    font-size: clamp(36px, 5.2vw, 64px); line-height: 0.9;
+    color: var(--lagoon);
+    white-space: nowrap; overflow: hidden;
+  }
+  .lockup-rule { height: 2px; background: var(--lagoon); width: 100%; }
+  .lockup-num {
+    align-self: stretch;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--lagoon); color: var(--sail);
+    font-family: var(--display); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.02em;
+    font-size: clamp(32px, 4.5vw, 56px); line-height: 1;
+    padding: 0 22px; min-width: 88px;
+  }
+  .sec-abyss .lockup-title, .sec-deep .lockup-title, .sec-tide .lockup-title { color: var(--brass); }
+  .sec-abyss .lockup-rule, .sec-deep .lockup-rule, .sec-tide .lockup-rule { background: var(--brass); }
+  .sec-abyss .lockup-num, .sec-deep .lockup-num, .sec-tide .lockup-num { background: var(--brass); color: var(--abyss); }
+  .sec-abyss .lockup-chevs, .sec-deep .lockup-chevs, .sec-tide .lockup-chevs { color: var(--brass); }
+  .sec-abyss .lockup-divider, .sec-deep .lockup-divider, .sec-tide .lockup-divider { color: var(--brass); }
+  .sec-lagoon .lockup-title { color: var(--sail); }
+  .sec-lagoon .lockup-rule { background: var(--sail); }
+  .sec-lagoon .lockup-num { background: var(--sail); color: var(--lagoon); }
+  .sec-lagoon .lockup-chevs { color: var(--sail); }
+  .sec-lagoon .lockup-divider { color: var(--sail); }
+  @media (max-width: 720px) {
+    .lockup { grid-template-columns: auto auto 1fr; gap: 14px; }
+    .lockup-num { grid-column: 3; padding: 0 14px; min-width: 64px; }
+    .lockup-divider { height: 64px; }
+  }
+
+  /* Section eyebrow — answers one of: what / why / who / how */
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--brass);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .eyebrow .num { color: var(--brass); }
+  .eyebrow .ln { width: 36px; height: 1px; background: var(--brass); opacity: 0.5; }
+  .eyebrow .q {
+    background: var(--brass); color: var(--abyss); padding: 4px 9px;
+    font-weight: 600; letter-spacing: 0.22em;
+  }
+
+  /* Headlines */
+  h1, h2, h3 { margin: 0; font-weight: 400; }
+  .display {
+    font-family: var(--display); font-weight: 400;
+    letter-spacing: -0.005em; line-height: 0.92;
     text-transform: uppercase;
   }
-  .nav-cta:hover { background: var(--gold); color: var(--bg); }
+  .display .italic { font-style: normal; color: var(--brass); }
+  .display .dim { color: var(--sail-fade); }
+  .display .brass { color: var(--brass); }
 
-  /* ── SECTIONS ── */
-  section { position: relative; z-index: 1; }
-
-  .eyebrow {
-    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+  .body-copy {
+    font-size: 17px; line-height: 1.6; color: var(--sail-dim); max-width: 560px; text-wrap: pretty;
   }
-  .section-h {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(24px, 3.5vw, 36px);
-    font-weight: 400; line-height: 1.15;
-    color: var(--white); margin-bottom: 0.5rem;
-  }
-  .section-h span { color: var(--gold); }
-  .section-sub {
-    font-size: 14px; color: var(--muted); line-height: 1.7;
-    max-width: 540px; margin-bottom: 2rem;
+  .lead {
+    font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.45;
+    color: var(--sail); max-width: 640px;
   }
 
-  /* ── GOLD RULE ── */
-  .gold-rule { height: 1px; background: var(--border); margin: 0; }
-  .gold-rule-thick { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  /* Buttons */
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 24px;
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    border: 1px solid transparent; background: transparent; color: inherit;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .btn-primary { background: var(--brass); color: var(--abyss); }
+  .btn-primary:hover { background: var(--brass-2); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--sail); color: var(--sail); }
+  .btn-ghost:hover { background: var(--sail); color: var(--abyss); }
+  .btn .arrow { width: 16px; height: 8px; }
 
-  /* ── HERO ── */
+  /* ============ HERO ============ */
   .hero {
-    padding: 6rem 2.5rem 5rem;
-    min-height: 85vh; display: flex; flex-direction: column; justify-content: center;
+    position: relative; min-height: 100vh; padding: 140px 0 80px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: var(--abyss);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(58, 107, 122, 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(200, 169, 106, 0.12) 0%, transparent 50%),
+      linear-gradient(180deg, var(--abyss) 0%, var(--abyss-2) 100%);
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(135deg, rgba(244, 237, 224, 0.025) 0 1px, transparent 1px 14px);
+    mix-blend-mode: overlay;
+  }
+  .hero-waves {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 200px; z-index: 1;
+    pointer-events: none; opacity: 0.5;
+  }
+  .hero-content { position: relative; z-index: 2; display: grid; gap: 40px; }
+  .hero-tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--brass);
+  }
+  .hero-head {
+    font-size: clamp(56px, 9vw, 132px);
+  }
+  /* Pasifika-decorated P — abstracted tatau pattern filling a single glyph.
+     Sail-cream base (matches surrounding type) + brass chevron/diamond band
+     overlay, clipped to text. Subtle but unmistakably patterned. */
+  .hero-head .p-pasifika {
+    background-color: var(--sail);
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 36'><g fill='none' stroke='%23c8a96a' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><polyline points='2,8 12,2 22,8'/><polyline points='2,16 12,10 22,16' opacity='0.55'/><line x1='0' y1='19' x2='24' y2='19' stroke-width='0.6' opacity='0.7'/><polygon points='12,22 16,26 12,30 8,26' fill='%23c8a96a' fill-opacity='0.55' stroke-width='0.7'/><polygon points='2,22 4,26 2,30 0,26' stroke-width='0.6'/><polygon points='22,22 24,26 22,30 20,26' stroke-width='0.6'/><line x1='0' y1='33' x2='24' y2='33' stroke-width='0.6' opacity='0.5'/></g></svg>");
+    background-repeat: repeat;
+    background-size: 0.28em 0.42em;
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+  }
+  @supports not (background-clip: text) {
+    .hero-head .p-pasifika { background: none; color: inherit; }
+  }
+  .hero-sub {
+    font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35; color: var(--sail-dim); max-width: 720px;
+    font-weight: 400;
+  }
+  .hero-micro {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--brass);
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .hero-micro::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+  .hero-micro::after { content: ''; width: 28px; height: 1px; background: currentColor; }
+  .hero-footnote {
+    margin-top: 32px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sail-fade);
+    border-top: 1px solid var(--sail-hair); padding-top: 18px;
+    max-width: 520px;
+  }
+  .hero-meta {
+    position: absolute; right: 56px; top: 50%; transform: translateY(-50%);
+    z-index: 2;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--sail-fade); text-align: right;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .hero-meta strong { color: var(--brass); font-weight: 500; display: block; margin-bottom: 4px; }
+  @media (max-width: 1100px) { .hero-meta { display: none; } }
+
+  /* ============ SECTION CHROME ============ */
+  section { position: relative; padding: 120px 0; }
+  .sec-abyss { background: var(--abyss); color: var(--sail); }
+  .sec-deep { background: var(--abyss-2); color: var(--sail); }
+  .sec-tide { background: var(--tide); color: var(--sail); }
+  .sec-lagoon { background: var(--lagoon); color: var(--sail); }
+  .sec-sail { background: var(--sail); color: var(--abyss); }
+
+  /* Light-section overrides */
+  .sec-sail .chev-stack { color: var(--lagoon); }
+  .sec-sail .eyebrow, .sec-sail .eyebrow .num { color: var(--lagoon); }
+  .sec-sail .eyebrow .ln { background: var(--lagoon); }
+  .sec-sail .eyebrow .q { background: var(--lagoon); color: var(--sail); }
+  .sec-sail .body-copy { color: var(--ink-dim); }
+  .sec-sail .lead { color: var(--abyss); }
+  .sec-sail .display .brass { color: var(--brass); }
+  .sec-sail .display .dim { color: var(--ink-fade); }
+
+  /* Lagoon-section overrides */
+  .sec-lagoon .chev-stack { color: var(--sail); }
+  .sec-lagoon .eyebrow, .sec-lagoon .eyebrow .num { color: var(--sail); }
+  .sec-lagoon .eyebrow .ln { background: var(--sail); }
+  .sec-lagoon .eyebrow .q { background: var(--sail); color: var(--lagoon); }
+  .sec-lagoon .body-copy { color: var(--sail-dim); }
+  .sec-lagoon .display .brass { color: var(--sail-2); }
+
+  /* Tide-section: lighter brass usage */
+  .sec-tide .chev-stack { color: var(--brass); }
+
+  /* Section head pattern */
+  .sec-head { display: grid; gap: 28px; margin-bottom: 64px; max-width: 920px; }
+  .sec-head .display { font-size: clamp(40px, 5.5vw, 78px); }
+
+  /* ============ WHAT IT IS — cards on sail ============ */
+  .what-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
+  @media (max-width: 900px) { .what-intro { grid-template-columns: 1fr; gap: 36px; } }
+  .pillars {
+    display: flex; gap: 36px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--lagoon); margin-bottom: 48px;
+  }
+  .pillars span::after { content: '·'; margin-left: 36px; opacity: 0.4; color: var(--brass); }
+  .pillars span:last-child::after { display: none; }
+  .card-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--ink-line);
+    border-left: 1px solid var(--ink-line);
+  }
+  @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  .card {
     position: relative;
-  }
-
-  .hero-badges { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-  .badge {
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 12px; border: 0.5px solid var(--border);
-    border-radius: 1px; color: var(--muted);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .badge::before { content: '◇'; font-size: 8px; color: var(--gold); }
-  .hero-h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(40px, 7vw, 78px);
-    font-weight: 700; line-height: 1.0;
-    color: var(--white); margin-bottom: 0.1em;
-    max-width: 700px;
-  }
-  .hero-h1 .gold { color: var(--gold); }
-  .hero-tagline {
-    font-size: 15px; color: var(--muted); margin: 1.5rem 0 2.5rem;
-    max-width: 480px; line-height: 1.7;
-    font-weight: 300; letter-spacing: 0.01em;
-  }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn-gold {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 12px 28px; background: var(--gold); color: var(--bg);
-    border: none; border-radius: 2px; cursor: pointer; transition: opacity 0.2s;
-  }
-  .btn-gold:hover { opacity: 0.88; }
-  .btn-outline {
-    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 12px 28px; background: transparent; color: var(--muted);
-    border: 0.5px solid var(--border-dim); border-radius: 2px; cursor: pointer;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 5rem; flex-wrap: wrap;
-    padding-top: 2rem; border-top: 0.5px solid var(--border-dim);
-  }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 400; color: var(--gold);
-  }
-  .stat-lbl { font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.04em; }
-
-  /* ── VISION ── */
-  .vision-section { padding: 5rem 2.5rem; }
-  .vision-quote {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(18px, 2.5vw, 26px);
-    font-weight: 400; line-height: 1.55;
-    color: var(--white); font-style: italic;
-    max-width: 680px; margin-bottom: 1rem;
-    padding-left: 1.75rem;
-    border-left: 2px solid var(--gold);
-  }
-  .vision-attr { font-size: 12px; color: var(--muted); padding-left: 1.75rem; letter-spacing: 0.05em; }
-
-  /* ── LEADERS ── */
-  .leaders-section { padding: 5rem 2.5rem; background: var(--surface); }
-  .leaders-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1px; border: 1px solid var(--border-dim);
-  }
-  .leader-card {
-    background: var(--surface); padding: 1.75rem 1.5rem;
-    border: 0.5px solid var(--border-dim);
+    padding: 36px 28px 32px;
+    border-right: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+    display: flex; flex-direction: column; gap: 20px;
+    min-height: 320px;
+    background: transparent;
     transition: background 0.25s;
-    position: relative; overflow: hidden;
   }
-  .leader-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: transparent; transition: background 0.25s;
+  .card:hover { background: rgba(14, 31, 46, 0.03); }
+  .card-top {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
   }
-  .leader-card:hover { background: var(--surface-2); }
-  .leader-card:hover::before { background: var(--gold); }
-  .leader-avatar {
-    width: 48px; height: 48px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 500;
-    background: rgba(200,151,46,0.12);
-    color: var(--gold); margin-bottom: 1rem;
-    border: 0.5px solid var(--border);
+  .card-num {
+    width: 76px; height: 76px; display: flex; align-items: center; justify-content: flex-start;
+    color: var(--lagoon);
   }
-  .leader-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; line-height: 1.3; }
-  .leader-role { font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
-  .leader-tag {
-    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold-dim); padding: 3px 8px;
-    border: 0.5px solid var(--gold-dim); border-radius: 1px; display: inline-block;
+  .card-num svg { width: 100%; height: auto; display: block; }
+  .card-tick {
+    margin-top: 18px; color: var(--brass); opacity: 0.7;
   }
-  .leader-add {
-    background: transparent; border: 0.5px dashed rgba(200,151,46,0.25);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 8px; cursor: pointer; min-height: 170px;
+  .card-body {
+    margin-top: auto; display: flex; flex-direction: column; gap: 12px;
   }
-  .leader-add:hover { background: rgba(200,151,46,0.04); }
-  .leader-add-icon { font-size: 24px; color: var(--gold-dim); }
-  .leader-add-txt { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+  .card-rule {
+    height: 1px; background: var(--brass); opacity: 0.55;
+    width: 36px;
+  }
+  .card-title {
+    font-family: var(--display); font-size: 26px; line-height: 1; text-transform: uppercase;
+    color: var(--abyss); letter-spacing: 0.01em;
+  }
+  .card-desc {
+    font-family: var(--sans); font-style: italic; font-weight: 400;
+    font-size: 14px; line-height: 1.55;
+    color: rgba(14, 31, 46, 0.7);
+    max-width: 24ch;
+  }
 
-  /* ── BRIDGE ── */
-  .bridge-section { padding: 5rem 2.5rem; }
-  .bridge-wrap {
-    display: grid; grid-template-columns: 1fr 80px 1fr;
-    align-items: center; gap: 0; max-width: 800px;
+  /* ============ WHY — lagoon, strength-based ============ */
+  .why-anchor {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: end;
+    margin-top: 56px;
   }
-  .bridge-node {
-    background: var(--surface); border: 0.5px solid var(--border-dim);
-    padding: 2rem 1.75rem; border-radius: 2px;
+  @media (max-width: 900px) { .why-anchor { grid-template-columns: 1fr; gap: 32px; } }
+  .why-statements {
+    display: grid; gap: 0;
+    border-top: 1px solid var(--sail-line);
+    margin-top: 8px;
   }
-  .bridge-node-flag {
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.75rem;
+  .why-row {
+    display: grid; grid-template-columns: 100px 1fr;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--sail-line);
+    align-items: baseline;
+    gap: 24px;
   }
-  .bridge-node-h { font-size: 16px; font-weight: 500; color: var(--white); margin-bottom: 1rem; }
-  .bridge-items { list-style: none; }
-  .bridge-items li {
-    font-size: 12px; color: var(--muted); padding: 4px 0;
-    display: flex; align-items: baseline; gap: 8px;
-    border-bottom: 0.5px solid var(--border-dim);
+  .why-row .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--sail-2); opacity: 0.7; }
+  .why-row .t {
+    font-family: var(--display); text-transform: uppercase; letter-spacing: 0.005em;
+    font-size: clamp(20px, 2.2vw, 28px); line-height: 1.05; color: var(--sail);
   }
-  .bridge-items li:last-child { border-bottom: none; }
-  .bridge-items li::before { content: '—'; color: var(--gold-dim); flex-shrink: 0; font-size: 10px; }
-  .bridge-center {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 6px;
-  }
-  .bridge-star {
-    width: 28px; height: 28px;
-  }
-  .bridge-line { width: 0.5px; height: 20px; background: var(--border); }
-  .bridge-lbl { font-size: 9px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
-  .bridge-insight {
-    margin-top: 2rem; max-width: 800px;
-    padding: 1.25rem 1.75rem;
-    background: var(--surface);
-    border-left: 2px solid var(--gold);
-    font-size: 13px; color: var(--muted); line-height: 1.7;
-  }
-  .bridge-insight strong { color: var(--white); font-weight: 500; }
+  .why-row .t .italic { font-style: normal; color: var(--sail-2); }
 
-  /* ── EVENTS ── */
-  .events-section { padding: 5rem 2.5rem; background: var(--surface); }
-  .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; }
-  .event-card {
-    background: var(--surface); border: 0.5px solid var(--border-dim);
-    overflow: hidden; transition: background 0.2s;
+  /* ============ WHO — deep, roster ============ */
+  .who-tagline {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(28px, 3.4vw, 42px); line-height: 1.18; color: var(--brass);
+    margin-top: 18px;
   }
-  .event-card:hover { background: var(--surface-2); }
-  .event-header-bar {
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-dim));
+  .roster {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--sail-line); border: 1px solid var(--sail-line);
+    margin: 56px 0 64px;
   }
-  .event-card-body { padding: 1.75rem 1.75rem; }
-  .event-card-date {
-    font-size: 10px; color: var(--gold); letter-spacing: 0.14em;
-    text-transform: uppercase; margin-bottom: 0.75rem;
+  @media (max-width: 900px) { .roster { grid-template-columns: repeat(2, 1fr); } }
+  .roster div {
+    background: var(--abyss-2); padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    min-height: 110px;
   }
-  .event-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 400; color: var(--white);
-    line-height: 1.25; margin-bottom: 0.5rem;
+  .roster .rn {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--brass);
   }
-  .event-card-org { font-size: 11px; color: var(--muted); margin-bottom: 1rem; }
-  .event-card-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
-  .event-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .event-tag {
-    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 10px; border: 0.5px solid var(--border-dim); color: var(--muted); border-radius: 1px;
+  .roster .rt {
+    font-family: var(--display); font-size: 22px; line-height: 1; text-transform: uppercase;
+    color: var(--sail); margin-top: auto; letter-spacing: 0.01em;
   }
-  .event-cta {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--gold); background: none; border: none; cursor: pointer; padding: 0;
-    display: flex; align-items: center; gap: 6px;
+  .three-up { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--sail-line); border: 1px solid var(--sail-line); }
+  @media (max-width: 900px) { .three-up { grid-template-columns: 1fr; } }
+  .block {
+    background: var(--abyss-2); padding: 44px 32px; display: flex; flex-direction: column; gap: 16px;
+    min-height: 280px;
   }
-  .event-cta::after { content: '→'; transition: transform 0.2s; }
-  .event-cta:hover::after { transform: translateX(4px); }
-  .event-coming {
-    background: transparent; border: 0.5px dashed rgba(200,151,46,0.2);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 3rem 2rem; text-align: center; gap: 0.75rem; min-height: 280px;
-  }
-  .event-coming-h { font-size: 14px; color: var(--muted); }
-  .event-coming-sub { font-size: 12px; color: rgba(122,117,112,0.7); line-height: 1.6; max-width: 200px; }
+  .block .num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; color: var(--brass); }
+  .block h3 { font-family: var(--display); font-size: 26px; line-height: 1.05; font-weight: 400; color: var(--sail); text-transform: uppercase; letter-spacing: 0.005em; }
+  .block h3 .italic { font-style: normal; color: var(--brass); }
+  .block p { font-size: 14px; line-height: 1.6; color: var(--sail-dim); margin: 0; }
+  .block svg { color: var(--brass); margin-top: auto; opacity: 0.65; }
 
-  /* ── THE VĀ ── */
-  .va-section { padding: 6rem 2.5rem; }
-  .va-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
-  .va-meaning-block { }
-  .va-word {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px; font-weight: 400; color: var(--gold);
-    line-height: 1; margin-bottom: 4px;
+  /* ============ HOW — sail, two paths ============ */
+  .how-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+    margin-top: 32px;
   }
-  .va-phonetic { font-size: 12px; color: var(--muted); margin-bottom: 1.25rem; letter-spacing: 0.06em; }
-  .va-definition {
-    font-size: 15px; color: var(--white); line-height: 1.75;
-    margin-bottom: 1rem; font-weight: 300;
+  @media (max-width: 900px) { .how-split { grid-template-columns: 1fr; gap: 48px; } }
+  .path {
+    display: flex; flex-direction: column; gap: 20px;
+    padding: 36px 32px; background: rgba(14, 31, 46, 0.04); border-left: 2px solid var(--lagoon);
   }
-  .va-origin { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 2rem; }
-  .va-who-h { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .va-who-list { list-style: none; }
-  .va-who-list li {
-    font-size: 13px; color: var(--muted); padding: 9px 0;
-    border-bottom: 0.5px solid var(--border-dim);
-    display: flex; align-items: center; gap: 10px;
+  .path-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lagoon);
   }
-  .va-who-list li::before { content: '◇'; font-size: 8px; color: var(--gold); flex-shrink: 0; }
+  .path-title {
+    font-family: var(--display); font-size: 36px; line-height: 1; color: var(--abyss); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.005em;
+  }
+  .path-title .italic { font-style: normal; color: var(--lagoon); }
+  .path-lead { font-size: 15px; line-height: 1.55; color: var(--ink-dim); }
+  .path-list {
+    display: flex; flex-direction: column; gap: 0; margin: 6px 0 0;
+    padding: 0; list-style: none;
+    border-top: 1px solid var(--ink-line);
+  }
+  .path-list li {
+    padding: 14px 0; border-bottom: 1px solid var(--ink-line);
+    font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--abyss);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .path-list li::before {
+    content: ''; width: 18px; height: 6px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 14'><polyline points='2,12 28,4 54,12' fill='none' stroke='%233a6b7a' stroke-width='2'/></svg>");
+    background-repeat: no-repeat; background-size: contain;
+    flex: 0 0 18px;
+  }
+  .path-stamp {
+    margin-top: 14px; font-family: var(--serif); font-style: italic;
+    font-size: 20px; line-height: 1.35; color: var(--lagoon);
+    border-top: 1px solid var(--ink-line); padding-top: 18px;
+  }
+  .how-bridge {
+    margin: 80px 0 0; padding: 36px 0 0; border-top: 1px solid var(--ink-line);
+    font-family: var(--display); text-transform: uppercase; letter-spacing: 0.005em;
+    font-size: clamp(24px, 3vw, 36px); line-height: 1.05; color: var(--abyss);
+    text-align: center; max-width: 920px; margin-left: auto; margin-right: auto;
+  }
+  .how-bridge em { color: var(--lagoon); font-style: normal; }
 
-  .va-form-card {
-    background: var(--surface); border: 0.5px solid var(--border);
-    padding: 2.25rem 2rem; border-radius: 2px;
+  /* ============ FOUNDER — tide ============ */
+  .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  @media (max-width: 900px) { .founder-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .founder-img {
+    aspect-ratio: 4/5; width: 100%;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(58, 107, 122, 0.55) 0%, transparent 60%),
+      linear-gradient(180deg, var(--lagoon) 0%, var(--abyss-2) 100%);
+    position: relative;
+    border: 1px solid var(--sail-line);
   }
-  .va-form-h {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 0.35rem;
+  .founder-img::after {
+    content: '// FOUNDER PORTRAIT · LOW KEY';
+    position: absolute; bottom: 16px; left: 16px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--sail-fade);
   }
-  .va-form-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.6; }
-  label.fl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
-  .fi {
-    width: 100%; font-size: 13px; padding: 10px 12px;
-    background: var(--bg); color: var(--white);
-    border: 0.5px solid rgba(255,255,255,0.1); border-radius: 2px;
-    outline: none; transition: border-color 0.2s;
-    font-family: 'DM Sans', sans-serif;
+  .founder-name {
+    font-family: var(--display); font-size: 44px; line-height: 1; font-weight: 400; color: var(--sail);
+    text-transform: uppercase; letter-spacing: 0.005em;
   }
-  .fi:focus { border-color: var(--gold); }
-  .fi::placeholder { color: var(--muted); }
-  select.fi { cursor: pointer; }
-  select.fi option { background: var(--surface); color: var(--white); }
-  .form-row { margin-bottom: 1rem; }
-  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
-  .form-submit {
-    width: 100%; margin-top: 0.5rem;
-    padding: 13px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    background: var(--gold); color: var(--bg); border: none; border-radius: 2px; cursor: pointer;
-    font-family: 'DM Sans', sans-serif; transition: opacity 0.2s;
+  .founder-name .italic { font-style: normal; color: var(--brass); }
+  .founder-name .brass { color: var(--brass); }
+  .founder-creds {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--brass); margin-top: 14px;
   }
-  .form-submit:hover { opacity: 0.88; }
-  .form-privacy { font-size: 10px; color: var(--muted); text-align: center; margin-top: 10px; letter-spacing: 0.03em; }
+  .founder-belief {
+    font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.45;
+    color: var(--sail); margin-top: 24px; border-left: 2px solid var(--brass); padding-left: 18px;
+    max-width: 460px;
+  }
 
-  /* ── FOOTER ── */
+  /* ============ FINAL ============ */
+  .final {
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(200, 169, 106, 0.14) 0%, transparent 55%),
+      linear-gradient(180deg, var(--lagoon) 0%, var(--abyss) 100%);
+    text-align: center;
+    padding: 160px 0 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final .display { font-size: clamp(48px, 6.5vw, 96px); margin: 32px 0 24px; }
+  .final-sub {
+    font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--sail-dim);
+    line-height: 1.5;
+  }
+  .final .btn-row { justify-content: center; margin-top: 48px; }
+
   footer {
-    border-top: 0.5px solid var(--border-dim);
-    padding: 2rem 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 1rem;
-    position: relative; z-index: 1;
+    border-top: 1px solid var(--sail-hair);
+    padding: 36px 0; background: var(--abyss-2);
   }
-  .footer-logo { display: flex; align-items: center; gap: 10px; }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { color: var(--muted); text-decoration: none; }
-  .footer-links a:hover { color: var(--gold); }
-
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.25rem; }
-    .nav-links { display: none; }
-    .hero { padding: 4rem 1.25rem 3rem; }
-    .vision-section, .leaders-section, .bridge-section, .events-section, .va-section { padding: 3.5rem 1.25rem; }
-    .bridge-wrap { grid-template-columns: 1fr; }
-    .bridge-center { flex-direction: row; padding: 0.75rem 0; }
-    .bridge-line { width: 20px; height: 0.5px; }
-    .va-grid { grid-template-columns: 1fr; }
-    footer { padding: 1.5rem 1.25rem; }
-    .hero-stats { gap: 2rem; }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sail-fade);
+    flex-wrap: wrap;
   }
+  .footer-inner a:hover { color: var(--sail); }
 </style>
 </head>
 <body>
 
-
-
-<!-- ── NAV ── -->
-<nav>
-  <div class="nav-brand">
-    <div class="nav-mark">
-      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="17,2 32,30 2,30" fill="none" stroke="#C8972E" stroke-width="1.2"/>
-        <polygon points="17,10 26,28 8,28" fill="rgba(200,151,46,0.18)"/>
-        <line x1="17" y1="2" x2="17" y2="0" stroke="#C8972E" stroke-width="1"/>
-        <circle cx="17" cy="17" r="2" fill="#C8972E"/>
-      </svg>
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">Pacific Island Ecosystem</div>
+    <div class="nav-links">
+      <a href="#what">What</a>
+      <a href="#why">Why</a>
+      <a href="#who">Who</a>
+      <a href="#how">How</a>
     </div>
-    <div>
-      <div class="nav-name">Pacific Islander Ecosystem</div>
-      <div class="nav-sub">Manumental · Founded by Dr. Manu Muasau</div>
-    </div>
+    <button class="nav-cta">Become a Founding Member</button>
   </div>
-  <div class="nav-links">
-    <a href="#vision">Vision</a>
-    <a href="#leaders">Leaders</a>
-    <a href="#events">Events</a>
-    <a href="#va">The Vā</a>
-  </div>
-  <button class="nav-cta" onclick="document.getElementById('va').scrollIntoView({behavior:'smooth'})">Join the Vā</button>
 </nav>
 
-<!-- ── HERO ── -->
-<section class="hero" id="hero">
-  <div class="hero-badges">
-    <span class="badge">Strength-Based</span>
-    <span class="badge">Culturally Grounded</span>
-    <span class="badge">Experiential</span>
-    <span class="badge">Community-Led</span>
-  </div>
-  <h1 class="hero-h1">
-    Built by<br>
-    our people.<br>
-    <span class="gold">For our people.</span>
-  </h1>
-  <p class="hero-tagline">
-    An expansive ecosystem to foster growth, connection, and shared success — from American Samoa to the mainland and beyond.
-  </p>
-  <div class="hero-actions">
-    <button class="btn-gold" onclick="document.getElementById('va').scrollIntoView({behavior:'smooth'})">Join the Vā — our network</button>
-    <button class="btn-outline" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">Upcoming events</button>
-  </div>
-  <div class="hero-stats">
-    <div>
-      <div class="stat-num">1.4M+</div>
-      <div class="stat-lbl">Pacific Islanders in the U.S.</div>
-    </div>
-    <div>
-      <div class="stat-num">55K+</div>
-      <div class="stat-lbl">Samoan Americans nationwide</div>
-    </div>
-    <div>
-      <div class="stat-num">2026</div>
-      <div class="stat-lbl">Ecosystem launch</div>
-    </div>
-  </div>
+<!-- ============ 01 · HERO ============ -->
+<section class="hero sec-abyss">
+  <div class="hero-bg"></div>
+  <svg class="hero-waves" viewBox="0 0 1600 200" preserveAspectRatio="none">
+    <path d="M 0 40 C 200 10, 400 70, 600 40 S 1000 10, 1200 40 S 1500 70, 1600 40" fill="none" stroke="#c8a96a" stroke-width="1" opacity="0.35"></path>
+    <path d="M 0 80 C 200 50, 400 110, 600 80 S 1000 50, 1200 80 S 1500 110, 1600 80" fill="none" stroke="#c8a96a" stroke-width="1" opacity="0.22"></path>
+    <path d="M 0 120 C 200 90, 400 150, 600 120 S 1000 90, 1200 120 S 1500 150, 1600 120" fill="none" stroke="#c8a96a" stroke-width="0.8" opacity="0.14"></path>
+  </svg>
 
-</section>
-
-<div class="gold-rule"></div>
-
-<!-- ── VISION ── -->
-<section class="vision-section" id="vision">
-  <div class="eyebrow">Founding vision</div>
-  <h2 class="section-h">The <span>opportunity</span></h2>
-  <p class="section-sub">Dr. Manu Muasau — former NFL athlete, Doctor of Psychology, and founder of Manumental</p>
-  <blockquote class="vision-quote">
-    "We believe in the extraordinary potential of our people and are developing an expansive ecosystem to foster growth, connection, and shared success. This initiative will open doors to unprecedented opportunities, providing resources and support to ignite the unique talents within our community."
-  </blockquote>
-  <p class="vision-attr">— Dr. Manu Muasau, Founder · Manumental</p>
-</section>
-
-<div class="gold-rule"></div>
-
-<!-- ── LEADERS ── -->
-<section class="leaders-section" id="leaders">
-  <div class="eyebrow">Community leaders</div>
-  <h2 class="section-h">Voices at the <span>forefront</span></h2>
-  <p class="section-sub">Pacific Islander leaders across government, sport, culture, and community development in the United States</p>
-
-  <div class="leaders-grid">
-
-    <div class="leader-card">
-      <div class="leader-avatar">DM</div>
-      <div class="leader-name">Dr. Manu Muasau</div>
-      <div class="leader-role">Founder, Manumental · Former NFL Athlete · Doctor of Psychology</div>
-      <span class="leader-tag">Founder</span>
+  <div class="wrap hero-content">
+    <div class="chev-stack" aria-hidden="true">
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
     </div>
 
-    <div class="leader-card">
-      <div class="leader-avatar">AA</div>
-      <div class="leader-name">Aumua Amata C. Radewagen</div>
-      <div class="leader-role">U.S. Representative, American Samoa · U.S. Congress</div>
-      <span class="leader-tag">Government</span>
-    </div>
+    <h1 class="display hero-head" style="text-align: center;">
+      <span class="italic">The</span><br>
+      <span class="p-pasifika">P</span>acific Island<br>
+      <span class="brass italic">Ecosystem</span>
+    </h1>
 
-    <div class="leader-card">
-      <div class="leader-avatar">TP</div>
-      <div class="leader-name">Troy Polamalu</div>
-      <div class="leader-role">NFL Hall of Famer · Samoan American community advocate</div>
-      <span class="leader-tag">Sport & Advocacy</span>
-    </div>
+    <p class="hero-sub" style="text-align: center">A trusted access point connecting Pacific Islanders across industries, generations, and geographies.</p>
 
-    <div class="leader-card">
-      <div class="leader-avatar">NT</div>
-      <div class="leader-name">Nainoa Thompson</div>
-      <div class="leader-role">Master Navigator · President, Polynesian Voyaging Society</div>
-      <span class="leader-tag">Culture & Heritage</span>
-    </div>
+    <div class="hero-micro" style="text-align: center">Launching · American Samoa Pilot Activation June 2026</div>
 
-    <div class="leader-card">
-      <div class="leader-avatar">MM</div>
-      <div class="leader-name">Marcus Mariota</div>
-      <div class="leader-role">NFL Quarterback · Entrepreneur · Samoan / Native Hawaiian</div>
-      <span class="leader-tag">Sport & Business</span>
+    <div class="btn-row" style="justify-content: center">
+      <button class="btn btn-primary">
+        Explore the Vision
+        <svg class="arrow" viewBox="0 0 24 10"><path d="M 1 5 L 22 5 M 17 1 L 22 5 L 17 9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+      </button>
+      <button class="btn btn-ghost">Become a Founding Member</button>
     </div>
-
-    <div class="leader-card">
-      <div class="leader-avatar">ET</div>
-      <div class="leader-name">Esera Tuaolo</div>
-      <div class="leader-role">Former NFL Player · Performing Artist · LGBTQ Advocate</div>
-      <span class="leader-tag">Advocacy & Arts</span>
-    </div>
-
-    <div class="leader-card leader-add" onclick="alert('Nomination coming soon')">
-      <div class="leader-add-icon">+</div>
-      <div class="leader-add-txt">Nominate a leader</div>
-    </div>
-
   </div>
 </section>
 
-<div class="gold-rule"></div>
-
-<!-- ── BRIDGE ── -->
-<section class="bridge-section" id="bridge">
-  <div class="eyebrow">The connection</div>
-  <h2 class="section-h">American Samoa <span>↔</span> Samoan Americans</h2>
-  <p class="section-sub">Two communities, one identity — bridging the homeland with the diaspora</p>
-
-  <div class="bridge-wrap">
-    <div class="bridge-node">
-      <div class="bridge-node-flag">American Samoa</div>
-      <div class="bridge-node-h">The Homeland</div>
-      <ul class="bridge-items">
-        <li>U.S. territory — ~56,000 residents</li>
-        <li>Rich fa'asamoa cultural foundation</li>
-        <li>Highest military service rate per capita</li>
-        <li>Limited federal program access</li>
-        <li>Emerging entrepreneurial base</li>
-        <li>Youth athletics pipeline</li>
-      </ul>
-    </div>
-    <div class="bridge-center">
-      <div class="bridge-line"></div>
-      <svg class="bridge-star" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="14,1 17,10 27,10 19,16 22,26 14,20 6,26 9,16 1,10 11,10" fill="none" stroke="#C8972E" stroke-width="1"/>
-        <circle cx="14" cy="14" r="2.5" fill="#C8972E" opacity="0.6"/>
-      </svg>
-      <div class="bridge-line"></div>
-      <div class="bridge-lbl">shared<br>vā</div>
-    </div>
-    <div class="bridge-node">
-      <div class="bridge-node-flag" style="color:var(--gold-lt)">Samoan Americans</div>
-      <div class="bridge-node-h">The Diaspora</div>
-      <ul class="bridge-items">
-        <li>55,000+ across the U.S. mainland</li>
-        <li>California, Hawaii, Utah as major hubs</li>
-        <li>Growing professional class</li>
-        <li>High rate of sports excellence</li>
-        <li>Cultural identity navigation</li>
-        <li>Capital & network access</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="bridge-insight">
-    The Pacific Islander Ecosystem creates infrastructure for <strong>mutual uplift</strong> — channeling mainland networks, resources, and professional development back to American Samoa while honoring the homeland's cultural wisdom that sustains diaspora identity.
-  </div>
-</section>
-
-<div class="gold-rule"></div>
-
-<!-- ── EVENTS ── -->
-<section class="events-section" id="events">
-  <div class="eyebrow">Featured events</div>
-  <h2 class="section-h">Gather. Compete. <span>Lead.</span></h2>
-  <p class="section-sub">Where Pacific Islander athletes, leaders, and community builders convene</p>
-
-  <div class="events-grid">
-
-    <div class="event-card">
-      <div class="event-header-bar"></div>
-      <div class="event-card-body">
-        <div class="event-card-date">June 19–29, 2026 · American Samoa</div>
-        <div class="event-card-title">Samoa Activation — "Be Legendary"</div>
-        <div class="event-card-org">Manumental × Pacific Islander Foundation (PIF)</div>
-        <p class="event-card-desc">Eleven days on island bringing the G2.0 mental performance curriculum directly to 300–400 Samoan youth. The week builds from G2.0 activation workshops into a Thursday summit keynote, a Friday community event, and culminates with Dr. Manu serving as a judge for Olympic Day on Saturday — laying the foundation for a lifetime partnership between Manumental and the homeland.</p>
-        <div class="event-tags">
-          <span class="event-tag">Youth</span>
-          <span class="event-tag">G2.0 Activation</span>
-          <span class="event-tag">Summit Keynote</span>
-          <span class="event-tag">Olympic Day</span>
+<!-- ============ 02 · WHAT IT IS — SAIL ============ -->
+<section id="what" class="sec-sail">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lockup">
+        <div class="lockup-chevs" aria-hidden="true">
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
         </div>
-        <button class="event-cta">Follow the journey</button>
+        <div class="lockup-divider"></div>
+        <div class="lockup-titlewrap">
+          <div class="lockup-title">What it is</div>
+          <div class="lockup-rule"></div>
+        </div>
+        <div class="lockup-num">02</div>
       </div>
+      <h2 class="display">
+        One Ecosystem.<br>
+        <span class="italic brass">MULTIPLE PATHWAYS.</span>
+      </h2>
+      <p class="body-copy">Multiple pathways. One trusted table. Athletics and boardrooms, classrooms and clinics, courtrooms and coastlines — wherever the journey leads, the right hand is already there to meet you.</p>
     </div>
 
-    <div class="event-card">
-      <div class="event-header-bar"></div>
-      <div class="event-card-body">
-        <div class="event-card-date">2026 · Location TBD</div>
-        <div class="event-card-title">Polynesian Athlete Summit</div>
-        <div class="event-card-org">Pacific Islander Ecosystem · Manumental</div>
-        <p class="event-card-desc">A landmark gathering bringing together Polynesian athletes, coaches, and leaders across collegiate and professional sport — exploring identity, mental performance, and community impact.</p>
-        <div class="event-tags">
-          <span class="event-tag">Athletics</span>
-          <span class="event-tag">Mental Performance</span>
-          <span class="event-tag">Leadership</span>
-          <span class="event-tag">Community</span>
+    <div class="pillars">
+      <span>Trust</span>
+      <span>Community</span>
+      <span>Culture</span>
+      <span>Opportunity</span>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Athletics"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="54" r="3"></circle><path d="M 12 51 C 12 42, 22 42, 27 37"></path><circle cx="28" cy="36" r="2.6" fill="currentColor" stroke="none"></circle><path d="M 30 34 L 52 14"></path><polyline points="44 13, 52 14, 50 22"></polyline><g stroke="#c8a96a"><path d="M 27 33 L 22 14" stroke-dasharray="2 3"></path><line x1="18" y1="8" x2="26" y2="16"></line><line x1="26" y1="8" x2="18" y2="16"></line><path d="M 31 37 L 48 39" stroke-dasharray="2 3"></path><circle cx="52" cy="39" r="3"></circle></g></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
         </div>
-        <button class="event-cta">Express interest</button>
-      </div>
-    </div>
-
-    <div class="event-card event-coming">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="14,1 17,10 27,10 19,16 22,26 14,20 6,26 9,16 1,10 11,10" fill="none" stroke="#7A5C1A" stroke-width="1"/>
-      </svg>
-      <div class="event-coming-h">More events coming</div>
-      <p class="event-coming-sub">Community workshops, cultural forums, and professional development sessions launching in 2026.</p>
-    </div>
-
-  </div>
-</section>
-
-<div class="gold-rule-thick"></div>
-
-<!-- ── THE VĀ ── -->
-<section class="va-section" id="va">
-  <div class="eyebrow">The Vā — Community Network</div>
-  <h2 class="section-h">Join the <span>living connection</span></h2>
-  <p class="section-sub">Add your name to the Pacific Islander Ecosystem's founding community</p>
-
-  <div class="va-grid">
-    <div class="va-meaning-block">
-      <div class="va-word">Vā</div>
-      <div class="va-phonetic">/ vā / &nbsp;·&nbsp; Samoan</div>
-      <p class="va-definition">The sacred, relational space between people. In Pacific Islander philosophy, the vā is not empty space but a living connection — the relationship itself, honoured and sustained by both parties.</p>
-      <p class="va-origin">Rooted in fa'asamoa — the Samoan way of life and its obligations of mutual care and community.</p>
-      <div class="va-who-h">Who joins the Vā?</div>
-      <ul class="va-who-list">
-        <li>Pacific Islander professionals and entrepreneurs</li>
-        <li>Current and former Pacific Islander athletes</li>
-        <li>Students and emerging community leaders</li>
-        <li>Educators, creatives, and advocates</li>
-        <li>American Samoans on island and stateside</li>
-        <li>Allies, partners, and community champions</li>
-      </ul>
-    </div>
-
-    <div class="va-form-card">
-      <div class="va-form-h">Add your name to the Vā</div>
-      <p class="va-form-sub">Be among the founding members of this growing Pacific Islander network. Your place is held. Your connection begins here.</p>
-
-      <div class="form-row-2">
-        <div class="form-row" style="margin-bottom:0">
-          <label class="fl">First name</label>
-          <input class="fi" type="text" placeholder="Manu">
-        </div>
-        <div class="form-row" style="margin-bottom:0">
-          <label class="fl">Last name</label>
-          <input class="fi" type="text" placeholder="Muasau">
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Athletics</div>
+          <div class="card-desc">Athlete development, NIL, pro-scouting and transition.</div>
         </div>
       </div>
-
-      <div class="form-row" style="margin-top:1rem">
-        <label class="fl">Email address</label>
-        <input class="fi" type="email" placeholder="you@example.com">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Leadership"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 52, 22 36, 30 44, 56 14"></polyline><circle cx="56" cy="14" r="2.5" fill="currentColor" stroke="none"></circle><line x1="8" y1="56" x2="56" y2="56" opacity=".25"></line></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Leadership</div>
+          <div class="card-desc">Coaching, command, and courage in the room.</div>
+        </div>
       </div>
-
-      <div class="form-row">
-        <label class="fl">Island heritage</label>
-        <select class="fi">
-          <option value="">Select your community</option>
-          <option>American Samoa</option>
-          <option>Western Samoa / Samoa</option>
-          <option>Tonga</option>
-          <option>Fiji</option>
-          <option>Hawaii / Native Hawaiian</option>
-          <option>Guam / Chamorro</option>
-          <option>Marshall Islands</option>
-          <option>Other Pacific Islander</option>
-          <option>Ally / Partner</option>
-        </select>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Business"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="30" width="14" height="24"></rect><rect x="25" y="18" width="14" height="36"></rect><rect x="42" y="24" width="14" height="30"></rect><line x1="4" y1="54" x2="60" y2="54"></line></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Business</div>
+          <div class="card-desc">Capital, deals, the rooms where decisions land.</div>
+        </div>
       </div>
-
-      <div class="form-row">
-        <label class="fl">How would you describe yourself?</label>
-        <select class="fi">
-          <option value="">Select your primary role</option>
-          <option>Professional / Executive</option>
-          <option>Athlete (current)</option>
-          <option>Athlete (former)</option>
-          <option>Student / Emerging leader</option>
-          <option>Entrepreneur / Business owner</option>
-          <option>Educator / Academic</option>
-          <option>Community organizer</option>
-          <option>Creative / Artist</option>
-          <option>Other</option>
-        </select>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Wellness"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="32" cy="32" r="22"></circle><circle cx="32" cy="32" r="14"></circle><circle cx="32" cy="32" r="6"></circle><circle cx="32" cy="32" r="1.5" fill="currentColor" stroke="none"></circle></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Wellness</div>
+          <div class="card-desc">Mind, body, lineage &mdash; whole-person care.</div>
+        </div>
       </div>
-
-      <div class="form-row">
-        <label class="fl">City / State</label>
-        <input class="fi" type="text" placeholder="Atlanta, GA">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Education"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 8 18 L 32 14 L 32 52 L 8 56 Z"></path><path d="M 56 18 L 32 14 L 32 52 L 56 56 Z"></path><line x1="32" y1="14" x2="32" y2="52" opacity=".4"></line></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Education</div>
+          <div class="card-desc">From school to scholarship to chair.</div>
+        </div>
       </div>
-
-      <button class="form-submit">Join the Vā →</button>
-      <p class="form-privacy">Your information stays within the Pacific Islander Ecosystem. We do not share or sell data.</p>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Legal &amp; Financial"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="32" y1="10" x2="32" y2="54"></line><line x1="12" y1="20" x2="52" y2="20"></line><line x1="18" y1="54" x2="46" y2="54"></line><circle cx="32" cy="10" r="2" fill="currentColor" stroke="none"></circle><path d="M 12 20 L 6 36 L 18 36 Z"></path><path d="M 52 20 L 46 36 L 58 36 Z"></path></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Legal &amp; Financial</div>
+          <div class="card-desc">Counsel that knows you, before you need it.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Relocation &amp; Mentorship"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 10 48 Q 22 14 32 34 T 54 18" stroke-dasharray="2 4"></path><circle cx="10" cy="48" r="3.5" fill="currentColor" stroke="none"></circle><circle cx="54" cy="18" r="3.5"></circle><polyline points="48 12, 54 18, 48 24"></polyline></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Relocation &amp; Mentorship</div>
+          <div class="card-desc">Island to mainland &mdash; never walking in cold.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-num" aria-label="Cultural Connection"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="32" cy="20" r="11"></circle><circle cx="22" cy="40" r="11"></circle><circle cx="42" cy="40" r="11"></circle></svg></div>
+          <svg class="card-tick" width="24" height="8" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+        </div>
+        <div class="card-body">
+          <div class="card-rule"></div>
+          <div class="card-title">Cultural Connection</div>
+          <div class="card-desc">The thread running through every other room.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="gold-rule"></div>
+<!-- ============ 03 · WHY IT MATTERS — LAGOON ============ -->
+<section id="why" class="sec-lagoon">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lockup">
+        <div class="lockup-chevs" aria-hidden="true">
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+        </div>
+        <div class="lockup-divider"></div>
+        <div class="lockup-titlewrap">
+          <div class="lockup-title">Why it matters</div>
+          <div class="lockup-rule"></div>
+        </div>
+        <div class="lockup-num">03</div>
+      </div>
+      <h2 class="display">
+        Our People<br>Have Always Been Strong.<br>
+        <span class="italic brass">Now we move as one.</span>
+      </h2>
+    </div>
 
-<!-- ── FOOTER ── -->
+    <div class="why-anchor">
+      <p class="lead">
+        From the islands to the diaspora, Pasifika excellence runs deep. What's been missing is the connective tissue that magnifies into collective momentum.
+      </p>
+      <div>
+        <p class="body-copy" style="color: var(--sail-dim); max-width: 460px;">The place where the work that's already happening across islands, sidelines, boardrooms, and classrooms finally moves together.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-statements">
+      <div class="why-row">
+        <div class="n">·01</div>
+        <div class="t">The talent <span class="italic">is here.</span></div>
+      </div>
+      <div class="why-row">
+        <div class="n">·02</div>
+        <div class="t">The leadership <span class="italic">is here.</span></div>
+      </div>
+      <div class="why-row">
+        <div class="n">·03</div>
+        <div class="t">The wisdom <span class="italic">is here.</span></div>
+      </div>
+      <div class="why-row">
+        <div class="n">·04</div>
+        <div class="t">What we build next, <span class="italic">we build together.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · WHO IT'S FOR — DEEP ABYSS ============ -->
+<section id="who" class="sec-deep">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lockup">
+        <div class="lockup-chevs" aria-hidden="true">
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+        </div>
+        <div class="lockup-divider"></div>
+        <div class="lockup-titlewrap">
+          <div class="lockup-title">Who it's for</div>
+          <div class="lockup-rule"></div>
+        </div>
+        <div class="lockup-num">04</div>
+      </div>
+      <h2 class="display">
+        For the ones already<br>
+        <span class="italic">doing the work.</span>
+      </h2>
+      <p class="body-copy" style="margin-top: 8px;">This is for Pasifika Avengers - the athletes, mentors, builders, healers and elders who carry their communities forward. </p>
+    </div>
+
+    <div class="three-up">
+      <div class="block">
+        <div class="num">01 / Culturally Fluent</div>
+        <h3>Built with deep understanding of Pasifika <span class="italic">identity, values, and lived experience.</span></h3>
+        <svg width="40" height="12" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      </div>
+      <div class="block">
+        <div class="num">02 / Relationship First</div>
+        <h3>Grounded in <span class="italic">trust, connection,</span> and the strength of community.</h3>
+        <svg width="40" height="12" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      </div>
+      <div class="block">
+        <div class="num">03 / Elite, Not Elitist</div>
+        <h3>High-level access designed to <span class="italic">uplift, not divide.</span></h3>
+        <svg width="40" height="12" viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · HOW TO SUPPORT — SAIL ============ -->
+<section id="how" class="sec-sail">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lockup">
+        <div class="lockup-chevs" aria-hidden="true">
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+          <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+        </div>
+        <div class="lockup-divider"></div>
+        <div class="lockup-titlewrap">
+          <div class="lockup-title">How to support</div>
+          <div class="lockup-rule"></div>
+        </div>
+        <div class="lockup-num">05</div>
+      </div>
+      <h2 class="display">
+        Where you<br>
+        <span class="italic brass">come in.</span>
+      </h2>
+    </div>
+
+    <div class="how-split">
+      <!-- PATH 1 — PILOT -->
+      <div class="path">
+        <div class="path-tag">Path 01 · The Pilot</div>
+        <div class="path-title">American Samoa <span class="italic">Pilot Activation</span></div>
+        <div class="path-lead">
+          Launching 2026 with community-centered programming for youth, coaches, leaders, and long-term ecosystem building.
+        </div>
+        <ul class="path-list">
+          <li>Youth Mental Strength Workshop</li>
+          <li>Coach &amp; Leadership Development</li>
+          <li>Sports &amp; Leadership Camp</li>
+          <li>Community Listening &amp; Ecosystem Building</li>
+        </ul>
+        <div class="path-stamp">
+          This is not the beginning of an idea.<br>
+          It is the beginning of implementation.
+        </div>
+        <button class="btn btn-primary" style="align-self: flex-start; margin-top: 8px;">
+          Support the Pilot
+          <svg class="arrow" viewBox="0 0 24 10"><path d="M 1 5 L 22 5 M 17 1 L 22 5 L 17 9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+      </div>
+
+      <!-- PATH 2 — COALITION -->
+      <div class="path" style="border-left-color: var(--brass);">
+        <div class="path-tag" style="color: var(--brass);">Path 02 · The Coalition</div>
+        <div class="path-title">An invitation to <span class="italic">build together.</span></div>
+        <div class="path-lead">
+          We are gathering trusted Pasifika leaders, athletes, entrepreneurs, and changemakers to shape what comes next. As a founding member, you help:
+        </div>
+        <ul class="path-list">
+          <li>Strengthen pathways for youth</li>
+          <li>Build trusted access</li>
+          <li>Expand culturally grounded opportunity</li>
+          <li>Shape long-term Pasifika infrastructure</li>
+          <li>Support future generations</li>
+        </ul>
+        <button class="btn btn-primary" style="align-self: flex-start; margin-top: 8px; background: var(--abyss); color: var(--sail);">
+          Become a Founding Member
+          <svg class="arrow" viewBox="0 0 24 10"><path d="M 1 5 L 22 5 M 17 1 L 22 5 L 17 9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="how-bridge">
+      No Pasifika person should have to navigate <em>major life transitions</em> alone.
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · FOUNDER — TIDE ============ -->
+<section class="sec-tide">
+  <div class="wrap">
+    <div class="founder-grid">
+      <div class="founder-img"></div>
+      <div>
+        <div class="lockup" style="margin-bottom: 0;">
+          <div class="lockup-chevs" aria-hidden="true">
+            <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+            <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+          </div>
+          <div class="lockup-divider"></div>
+          <div class="lockup-titlewrap">
+            <div class="lockup-title">Founder</div>
+            <div class="lockup-rule"></div>
+          </div>
+          <div class="lockup-num">06</div>
+        </div>
+        <h2 class="founder-name" style="margin-top: 24px;">
+          Founded by<br>
+          <span class="brass">Dr. Manu</span> <span class="italic">Muasau.</span>
+        </h2>
+        <div class="founder-creds">NFL · PsyD · Founder of Manumental</div>
+        <p class="body-copy" style="margin-top: 24px; max-width: 480px;">
+          Dr. Manu's work sits at the intersection of performance, leadership, culture, and humanity.
+        </p>
+        <div class="founder-belief">
+          PIE was built from one belief:<br>
+          our people deserve stronger pathways.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · FINAL CTA — LAGOON → ABYSS GRADIENT ============ -->
+<section class="final">
+  <div class="wrap" style="position: relative; z-index: 2;">
+    <div class="chev-stack" aria-hidden="true" style="align-items: center; justify-self: center; margin: 0 auto 36px; width: 56px;">
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+      <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
+    </div>
+    <h2 class="display">
+      We are stronger<br>
+      when we <span class="italic brass">build together.</span>
+    </h2>
+    <p class="final-sub">
+      For our youth. For our families.<br>
+      For the future of Pasifika.
+    </p>
+    <div class="btn-row">
+      <button class="btn btn-primary">
+        Join the Founding Coalition
+        <svg class="arrow" viewBox="0 0 24 10"><path d="M 1 5 L 22 5 M 17 1 L 22 5 L 17 9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+      </button>
+      <button class="btn btn-ghost">Support the American Samoa Pilot</button>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-logo">
-    <svg width="20" height="20" viewBox="0 0 34 34" fill="none">
-      <polygon points="17,2 32,30 2,30" fill="none" stroke="#C8972E" stroke-width="1.2"/>
-      <circle cx="17" cy="17" r="2" fill="#C8972E"/>
-    </svg>
-    <span>© 2026 Pacific Islander Ecosystem · A Manumental Initiative · Dr. Manu Muasau</span>
-  </div>
-  <div class="footer-links">
-    <a href="#">Privacy</a>
-    <a href="#">Contact</a>
-    <a href="#">Manumental.com</a>
+  <div class="wrap footer-inner">
+    <div>pie.manumental.com</div>
+    <div>By Manumental · MMXXVI</div>
+    <div><a href="#">Contact</a> · <a href="#">Press</a> · <a href="#">Privacy</a></div>
   </div>
 </footer>
 
