@@ -91,7 +91,7 @@
   }
   .lockup-chevs svg { width: 56px; height: 16px; display: block; }
   .lockup-chevs svg:first-child { opacity: 0.4; }
-  .lockup-divider { width: 1px; height: 78px; background: currentColor; opacity: 0.4; color: var(--brass); }
+  .lockup-divider { width: 1px; height: 48px; background: currentColor; opacity: 0.4; color: var(--brass); }
   .lockup-titlewrap {
     display: flex; flex-direction: column; gap: 12px;
     min-width: 0;
@@ -99,7 +99,7 @@
   .lockup-title {
     font-family: var(--display); font-weight: 400;
     text-transform: uppercase; letter-spacing: 0.02em;
-    font-size: clamp(36px, 5.2vw, 64px); line-height: 0.9;
+    font-size: clamp(22px, 3vw, 36px); line-height: 0.9;
     color: var(--lagoon);
     white-space: nowrap; overflow: hidden;
   }
@@ -110,8 +110,8 @@
     background: var(--lagoon); color: var(--sail);
     font-family: var(--display); font-weight: 400;
     text-transform: uppercase; letter-spacing: 0.02em;
-    font-size: clamp(32px, 4.5vw, 56px); line-height: 1;
-    padding: 0 22px; min-width: 88px;
+    font-size: clamp(20px, 2.6vw, 32px); line-height: 1;
+    padding: 0 18px; min-width: 64px;
   }
   .sec-abyss .lockup-title, .sec-deep .lockup-title, .sec-tide .lockup-title { color: var(--brass); }
   .sec-abyss .lockup-rule, .sec-deep .lockup-rule, .sec-tide .lockup-rule { background: var(--brass); }
@@ -285,7 +285,7 @@
 
   /* Section head pattern */
   .sec-head { display: grid; gap: 28px; margin-bottom: 64px; max-width: 920px; }
-  .sec-head .display { font-size: clamp(40px, 5.5vw, 78px); }
+  .sec-head .display { font-size: clamp(48px, 7vw, 100px); }
 
   /* ============ WHAT IT IS — cards on sail ============ */
   .what-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
@@ -540,7 +540,7 @@
   </svg>
 
   <div class="wrap hero-content">
-    <div class="chev-stack" aria-hidden="true">
+    <div class="chev-stack" aria-hidden="true" style="align-items: center; justify-self: center; width: 84px;">
       <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
       <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
       <svg viewBox="0 0 56 14"><polyline class="chev-line" points="2,12 28,4 54,12"></polyline></svg>
