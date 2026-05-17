@@ -446,9 +446,8 @@
   @media (max-width: 900px) {
     .founder-grid { grid-template-columns: 1fr; gap: 36px; justify-items: center; }
     .founder-img {
-      width: auto; max-width: 100%;
-      max-height: 60vh;
-      aspect-ratio: auto; object-fit: contain;
+      width: 100%; max-width: 320px;
+      height: auto; aspect-ratio: auto; object-fit: contain;
     }
   }
   .founder-name {
@@ -845,22 +844,22 @@
 <!-- ============ 06 · FOUNDER — TIDE ============ -->
 <section class="sec-tide">
   <div class="wrap">
+    <div class="lockup">
+      <div class="lockup-chevs" aria-hidden="true">
+        <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+        <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
+      </div>
+      <div class="lockup-divider"></div>
+      <div class="lockup-titlewrap">
+        <div class="lockup-title">Founder</div>
+        <div class="lockup-rule"></div>
+      </div>
+      <div class="lockup-num">06</div>
+    </div>
     <div class="founder-grid">
       <img class="founder-img" src="manu-headshot.webp" alt="Dr. Manu Muasau" width="800" height="1000">
       <div>
-        <div class="lockup" style="margin-bottom: 0;">
-          <div class="lockup-chevs" aria-hidden="true">
-            <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
-            <svg viewBox="0 0 56 16"><polyline class="chev-line" points="4,13 28,3 52,13"></polyline></svg>
-          </div>
-          <div class="lockup-divider"></div>
-          <div class="lockup-titlewrap">
-            <div class="lockup-title">Founder</div>
-            <div class="lockup-rule"></div>
-          </div>
-          <div class="lockup-num">06</div>
-        </div>
-        <h2 class="founder-name" style="margin-top: 24px;">
+        <h2 class="founder-name">
           Founded by<br>
           <span class="brass">Dr. Manu</span> <span class="italic">Muasau.</span>
         </h2>
