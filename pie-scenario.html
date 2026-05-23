@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PIE — Scenario: Sina</title>
+<style>
+  :root {
+    --navy: #141D28;
+    --teal: #43809F;
+    --copper: #B56435;
+    --mist: #EDF0F3;
+    --gold: #C9993A;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1280px;
+    height: 820px;
+    background: var(--navy);
+    color: var(--mist);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  body.capture *, body.capture *::before, body.capture *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 820px;
+    padding: 28px 48px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* 1. LOGO BAR */
+  .logo-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    opacity: 0.85;
+  }
+  .logo-bar .wordmark {
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    color: var(--mist);
+  }
+  .logo-bar .wordmark .accent { color: var(--copper); }
+  .logo-bar .url { color: var(--teal); letter-spacing: 0.16em; }
+
+  /* 2. PERSONA HEADER (static) */
+  .persona {
+    display: grid;
+    grid-template-columns: 132px 1fr 1.35fr;
+    gap: 24px;
+    padding: 18px 20px;
+    border: 1px solid rgba(237,240,243,0.08);
+    border-radius: 10px;
+    background: rgba(237,240,243,0.02);
+  }
+  .photo {
+    width: 132px;
+    height: 132px;
+    border-radius: 8px;
+    background: rgba(237,240,243,0.06);
+    border: 1px dashed rgba(237,240,243,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(237,240,243,0.55);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .id-block .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .id-block .name {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--mist);
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+  .id-block .sub {
+    font-size: 13px;
+    color: rgba(237,240,243,0.72);
+    letter-spacing: 0.04em;
+  }
+  .bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bullet {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .bullet .label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+  }
+  .bullet .text {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: rgba(237,240,243,0.88);
+  }
+  .anchor-quote {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(237,240,243,0.08);
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(237,240,243,0.82);
+  }
+  .anchor-quote .em { color: var(--copper); font-style: normal; }
+
+  /* 3. BEAT CARDS */
+  .beats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .beat {
+    border: 1px solid rgba(237,240,243,0.1);
+    border-radius: 10px;
+    padding: 14px 14px 12px;
+    background: rgba(237,240,243,0.015);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 230px;
+  }
+  .beat .num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+  }
+  .beat .stage {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(237,240,243,0.55);
+  }
+  .beat .hed {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--mist);
+  }
+  .beat .body {
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: rgba(237,240,243,0.75);
+  }
+  .beat .tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .beat .tag {
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 7px;
+    border-radius: 4px;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    background: rgba(67,128,159,0.08);
+  }
+  .beat .tag.hot {
+    border-color: var(--copper);
+    color: #f5d9c4;
+    background: rgba(181,100,53,0.18);
+  }
+
+  /* Beat state styles */
+  .beat[data-state="active"] {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px rgba(67,128,159,0.4), 0 4px 24px rgba(67,128,159,0.15);
+    background: rgba(67,128,159,0.05);
+  }
+  .beat[data-state="active"] .body { color: rgba(237,240,243,0.95); }
+  .beat[data-state="done"] {
+    border-color: rgba(237,240,243,0.07);
+    opacity: 0.62;
+  }
+  .beat[data-state="done"] .hed { color: rgba(237,240,243,0.78); }
+  .beat[data-state="done"] .body { color: rgba(237,240,243,0.55); }
+  .beat[data-state="upcoming"] {
+    border-color: rgba(237,240,243,0.05);
+    opacity: 0.28;
+  }
+
+  /* 4. QUOTE BAR */
+  .quote-bar {
+    padding: 14px 22px;
+    border-left: 3px solid var(--copper);
+    background: rgba(181,100,53,0.06);
+    font-size: 14px;
+    line-height: 1.45;
+    font-style: italic;
+    color: rgba(237,240,243,0.9);
+    border-radius: 0 6px 6px 0;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 5. PILLARS */
+  .pillars {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .pill {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(237,240,243,0.08);
+    color: rgba(237,240,243,0.3);
+    background: transparent;
+    font-weight: 600;
+  }
+  .pill.active {
+    border-color: var(--teal);
+    color: var(--mist);
+    background: rgba(67,128,159,0.16);
+  }
+  .pill.hot {
+    border-color: var(--copper);
+    color: #fff;
+    background: rgba(181,100,53,0.22);
+  }
+
+  /* 6. NAV DOTS */
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(237,240,243,0.18);
+  }
+  .dot.active { background: var(--copper); }
+  .dot.done { background: rgba(67,128,159,0.7); }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- 1. LOGO BAR -->
+  <div class="logo-bar">
+    <div class="wordmark">P<span class="accent">I</span>E</div>
+    <div class="url">pie.manumental.com</div>
+  </div>
+
+  <!-- 2. PERSONA HEADER -->
+  <div class="persona">
+    <img class="photo" id="persona-photo" alt="" style="display:none" />
+    <div class="photo" id="persona-photo-placeholder">Photo</div>
+
+    <div class="id-block">
+      <div class="eyebrow">A composite scenario</div>
+      <div class="name">Sina Faleolo</div>
+      <div class="sub">17 · Libero · Pago Pago, American Samoa</div>
+    </div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div class="label">Background</div>
+        <div class="text">First in her family to be recruited off-island. Eldest daughter.</div>
+      </div>
+      <div class="bullet">
+        <div class="label">The Situation</div>
+        <div class="text">Three D1 offers. Six thousand miles between the kitchen table and a dorm room she has never seen.</div>
+      </div>
+      <div class="bullet">
+        <div class="label">The Gap</div>
+        <div class="text">No Pasifika contact at any program. No one who has made this choice and can speak both languages — literally and culturally.</div>
+      </div>
+      <div class="anchor-quote">
+        "They want me to leave. They also don't want me to leave. Both are love. <span class="em">— and PIE is the first place where both can be true at once.</span>"
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. BEAT CARDS -->
+  <div class="beats" id="beats"></div>
+
+  <!-- 4. QUOTE BAR -->
+  <div class="quote-bar" id="quote-bar"></div>
+
+  <!-- 5. PILLARS -->
+  <div class="pillars" id="pillars"></div>
+
+  <!-- 6. NAV DOTS -->
+  <div class="nav-dots" id="nav-dots"></div>
+
+</div>
+
+<script>
+const BEATS = [
+  {
+    "num": "01",
+    "stage": "High school → College",
+    "hed": "The decision she carries alone",
+    "body": "Three D1 offers arrive in English. Her mother answers in Samoan. The conversation that needs to happen doesn't exist yet.",
+    "tags": [
+      {"label": "Athletics", "hot": true},
+      {"label": "Legal & Financial", "hot": true},
+      {"label": "Cultural Connection", "hot": true}
+    ],
+    "quote": "The recruiters call in English. Her mother answers in Samoan. The conversation that needs to happen doesn't exist yet — not for her, not for her family.",
+    "pillarsHot": [0, 4, 6],
+    "pillarsActive": [0, 4, 6]
+  },
+  {
+    "num": "02",
+    "stage": "Discovery · Week one",
+    "hed": "She finds a room she knows",
+    "body": "Filters by sport, heritage, stage. Every name is vetted. She requests a warm intro to Lupe Sa'u — Stanford D1, also from Pago Pago.",
+    "tags": [
+      {"label": "Athletics", "hot": true},
+      {"label": "Relocation & Mentorship", "hot": true},
+      {"label": "Cultural Connection", "hot": false}
+    ],
+    "quote": "A teammate's older sister sends her the link. No marketing. A name, a sentence, a vetted network. She makes a profile on a Tuesday night, after practice, before homework.",
+    "pillarsHot": [0, 7],
+    "pillarsActive": [0, 4, 7]
+  },
+  {
+    "num": "03",
+    "stage": "First call · 30 minutes",
+    "hed": "Lupe walks her through it",
+    "body": "In Samoan and English. Doesn't pitch a school — walks Sina through the conversation she needs to have with her parents. NIL context included.",
+    "tags": [
+      {"label": "Wellness", "hot": true},
+      {"label": "Legal & Financial", "hot": true},
+      {"label": "Education", "hot": false},
+      {"label": "Cultural Connection", "hot": false}
+    ],
+    "quote": "Lupe doesn't pitch a school. She walks Sina through the conversation she needs to have with her parents — in Samoan and English. Both.",
+    "pillarsHot": [3, 6],
+    "pillarsActive": [2, 3, 4, 6]
+  },
+  {
+    "num": "04",
+    "stage": "In-person · The Summit",
+    "hed": "She walks in already known",
+    "body": "80 Pasifika athletes. She arrives knowing two by name and 42 more by story. Coaches, operators, attorneys — all in one room.",
+    "tags": [
+      {"label": "Leadership", "hot": true},
+      {"label": "Business", "hot": true},
+      {"label": "Education", "hot": false},
+      {"label": "Wellness", "hot": false},
+      {"label": "Relocation & Mentorship", "hot": false}
+    ],
+    "quote": "Four months later, the PI Athlete Summit. Eighty Pasifika athletes in one room. She arrives knowing two people by name — and forty-two more by story.",
+    "pillarsHot": [1, 5],
+    "pillarsActive": [1, 2, 3, 5, 7]
+  }
+];
+
+const PILLARS = [
+  "Athletics",
+  "Leadership",
+  "Education",
+  "Wellness",
+  "Cultural Connection",
+  "Business",
+  "Legal & Financial",
+  "Relocation & Mentorship"
+];
+
+// Render beat cards
+const beatsEl = document.getElementById("beats");
+BEATS.forEach((b, i) => {
+  const tagsHtml = b.tags.map(t =>
+    `<span class="tag${t.hot ? " hot" : ""}">${t.label}</span>`
+  ).join("");
+  beatsEl.insertAdjacentHTML("beforeend", `
+    <div class="beat" data-beat="${i}" data-state="upcoming">
+      <div class="num">BEAT ${b.num}</div>
+      <div class="stage">${b.stage}</div>
+      <div class="hed">${b.hed}</div>
+      <div class="body">${b.body}</div>
+      <div class="tags">${tagsHtml}</div>
+    </div>
+  `);
+});
+
+// Render pillars
+const pillarsEl = document.getElementById("pillars");
+PILLARS.forEach((p, i) => {
+  pillarsEl.insertAdjacentHTML("beforeend", `<div class="pill" data-pillar="${i}">${p}</div>`);
+});
+
+// Render nav dots
+const navEl = document.getElementById("nav-dots");
+BEATS.forEach((_, i) => {
+  navEl.insertAdjacentHTML("beforeend", `<div class="dot" data-dot="${i}"></div>`);
+});
+
+const quoteEl = document.getElementById("quote-bar");
+
+function setFrame(idx) {
+  // Beat cards
+  document.querySelectorAll(".beat").forEach(el => {
+    const i = Number(el.dataset.beat);
+    el.dataset.state = i < idx ? "done" : i === idx ? "active" : "upcoming";
+  });
+
+  // Quote
+  quoteEl.textContent = "“" + BEATS[idx].quote + "”";
+
+  // Pillars
+  const hot = new Set(BEATS[idx].pillarsHot);
+  const active = new Set(BEATS[idx].pillarsActive);
+  document.querySelectorAll(".pill").forEach(el => {
+    const i = Number(el.dataset.pillar);
+    el.classList.remove("active", "hot");
+    if (hot.has(i)) el.classList.add("hot");
+    else if (active.has(i)) el.classList.add("active");
+  });
+
+  // Nav dots
+  document.querySelectorAll(".dot").forEach(el => {
+    const i = Number(el.dataset.dot);
+    el.classList.remove("active", "done");
+    if (i < idx) el.classList.add("done");
+    else if (i === idx) el.classList.add("active");
+  });
+}
+
+window.setFrame = setFrame;
+setFrame(0);
+</script>
+</body>
+</html>
