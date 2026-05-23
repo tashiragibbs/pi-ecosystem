@@ -695,35 +695,46 @@
       <p class="body-copy">A composite story showing how the ecosystem activates — beat by beat — when one athlete reaches in.</p>
     </div>
 
-    <!-- Persona header -->
+    <!-- PERSONA -->
     <div class="ps-persona">
       <div class="ps-photo" aria-label="Photo placeholder">Photo</div>
       <div class="ps-id">
         <div class="ps-eyebrow">A composite scenario</div>
         <div class="ps-name">Sina Faleolo</div>
         <div class="ps-sub">17 · Libero · Pago Pago, American Samoa</div>
+        <div class="ps-anchor">
+          &ldquo;They want me to leave. They also don&rsquo;t want me to leave. Both are love. <span class="ps-anchor-em">&mdash; PIE is the first place where both can be true at once.</span>&rdquo;
+        </div>
       </div>
       <div class="ps-bullets">
         <div class="ps-bullet"><div class="ps-label">Background</div><div class="ps-text">First in her family to be recruited off-island. Eldest daughter.</div></div>
         <div class="ps-bullet"><div class="ps-label">The Situation</div><div class="ps-text">Three D1 offers. Six thousand miles between the kitchen table and a dorm room she has never seen.</div></div>
         <div class="ps-bullet"><div class="ps-label">The Gap</div><div class="ps-text">No Pasifika contact at any program. No one who has made this choice and can speak both languages — literally and culturally.</div></div>
       </div>
-      <div class="ps-anchor">
-        &ldquo;They want me to leave. They also don&rsquo;t want me to leave. Both are love. <span class="ps-anchor-em">&mdash; and PIE is the first place where both can be true at once.</span>&rdquo;
-      </div>
     </div>
 
-    <!-- Beat cards -->
-    <div class="ps-beats" id="ps-beats" role="tablist"></div>
+    <!-- ACTIVE BEAT + SPINE -->
+    <div class="ps-active">
+      <div class="ps-active-meta">
+        <div class="ps-active-stagerow">
+          <span class="ps-active-num" id="ps-active-num">01</span>
+          <span class="ps-active-stage" id="ps-active-stage">—</span>
+        </div>
+        <div class="ps-active-hed" id="ps-active-hed">—</div>
+        <div class="ps-active-body" id="ps-active-body">—</div>
+        <div class="ps-active-tags" id="ps-active-tags"></div>
+      </div>
+      <div class="ps-spine" id="ps-spine" role="tablist"></div>
+    </div>
 
-    <!-- Quote bar -->
+    <!-- QUOTE -->
     <div class="ps-quote" id="ps-quote"></div>
 
-    <!-- Pillars -->
+    <!-- PILLARS -->
     <div class="ps-pillars" id="ps-pillars"></div>
 
-    <!-- Nav dots -->
-    <div class="ps-dots" id="ps-dots"></div>
+    <!-- PROGRESS -->
+    <div class="ps-progress"><div class="ps-progress-fill" id="ps-progress-fill"></div></div>
   </div>
 </section>
 
@@ -731,132 +742,165 @@
   /* ============ PIE SCENARIO ============ */
   .pie-scenario .ps-persona {
     display: grid;
-    grid-template-columns: 132px 1fr 1.3fr;
-    gap: 28px;
-    padding: 24px;
-    border: 1px solid var(--sail-line);
-    border-radius: 10px;
-    background: rgba(244, 237, 224, 0.03);
-    margin-bottom: 28px;
+    grid-template-columns: 160px 1.1fr 1.2fr;
+    gap: 36px;
+    padding: 32px 0;
+    border-top: 1px solid var(--sail-line);
+    border-bottom: 1px solid var(--sail-line);
+    margin-bottom: 48px;
   }
   @media (max-width: 900px) {
-    .pie-scenario .ps-persona { grid-template-columns: 1fr; }
+    .pie-scenario .ps-persona { grid-template-columns: 1fr; gap: 24px; padding: 24px 0; }
   }
   .pie-scenario .ps-photo {
-    width: 132px; height: 132px;
+    width: 160px; height: 160px;
     border-radius: 8px;
-    background: rgba(244, 237, 224, 0.05);
-    border: 1px dashed var(--sail-line);
+    background: rgba(244, 237, 224, 0.04);
+    border: 1px dashed var(--sail-fade);
     display: flex; align-items: center; justify-content: center;
-    color: var(--sail-fade);
+    color: var(--sail-dim);
     font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
   }
   .pie-scenario .ps-eyebrow {
     font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--brass); margin-bottom: 10px;
+    font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--brass); margin-bottom: 12px;
   }
   .pie-scenario .ps-name {
     font-family: var(--display);
-    font-size: 36px; line-height: 1; color: var(--sail);
-    margin-bottom: 8px; letter-spacing: 0.02em;
+    font-size: clamp(36px, 4.5vw, 52px); line-height: 1;
+    color: var(--sail); margin-bottom: 10px; letter-spacing: 0.01em;
   }
   .pie-scenario .ps-sub {
-    font-size: 13px; color: var(--sail-dim); letter-spacing: 0.04em;
-  }
-  .pie-scenario .ps-bullets { display: flex; flex-direction: column; gap: 10px; }
-  .pie-scenario .ps-bullet { display: grid; grid-template-columns: 120px 1fr; gap: 14px; }
-  .pie-scenario .ps-label {
-    font-family: var(--mono);
-    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--brass); padding-top: 2px;
-  }
-  .pie-scenario .ps-text {
-    font-size: 13px; line-height: 1.45; color: var(--sail);
+    font-size: 13px; color: var(--sail-dim); letter-spacing: 0.06em;
+    margin-bottom: 18px;
   }
   .pie-scenario .ps-anchor {
-    grid-column: 1 / -1;
-    margin-top: 8px; padding-top: 18px;
-    border-top: 1px solid var(--sail-hair);
     font-family: var(--serif); font-style: italic;
     font-size: 15px; line-height: 1.5; color: var(--sail-dim);
   }
-  .pie-scenario .ps-anchor-em { color: var(--brass); font-style: normal; }
+  .pie-scenario .ps-anchor-em {
+    color: var(--brass-2); font-style: normal; font-weight: 600;
+  }
+  .pie-scenario .ps-bullets { display: flex; flex-direction: column; gap: 14px; }
+  .pie-scenario .ps-bullet { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }
+  .pie-scenario .ps-label {
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--brass); padding-top: 3px;
+  }
+  .pie-scenario .ps-text {
+    font-size: 13.5px; line-height: 1.5; color: var(--sail);
+  }
 
-  .pie-scenario .ps-beats {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-    margin-bottom: 24px;
+  /* Active beat hero + spine */
+  .pie-scenario .ps-active {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    margin-bottom: 36px;
+    align-items: start;
   }
   @media (max-width: 900px) {
-    .pie-scenario .ps-beats { grid-template-columns: repeat(2, 1fr); }
+    .pie-scenario .ps-active { grid-template-columns: 1fr; gap: 24px; }
   }
-  .pie-scenario .ps-beat {
-    text-align: left; font: inherit; color: inherit;
-    border: 1px solid var(--sail-line);
-    border-radius: 10px;
-    padding: 18px 18px 16px;
-    background: rgba(244, 237, 224, 0.02);
-    display: flex; flex-direction: column; gap: 10px;
-    min-height: 260px;
-    cursor: pointer;
-    transition: opacity 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  .pie-scenario .ps-active-meta {
+    display: flex; flex-direction: column; gap: 18px;
+    min-height: 280px;
   }
-  .pie-scenario .ps-beat:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
-  .pie-scenario .ps-beat .ps-num {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.24em; color: var(--brass-2); font-weight: 700;
-  }
-  .pie-scenario .ps-beat .ps-stage {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--sail-fade);
-  }
-  .pie-scenario .ps-beat .ps-hed {
-    font-family: var(--display);
-    font-size: 20px; line-height: 1.15; color: var(--sail);
-    letter-spacing: 0.01em;
-  }
-  .pie-scenario .ps-beat .ps-body {
-    font-size: 13px; line-height: 1.45; color: var(--sail-dim);
-  }
-  .pie-scenario .ps-tags {
-    margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px;
-  }
-  .pie-scenario .ps-tag {
+  .pie-scenario .ps-active-stagerow {
+    display: flex; align-items: center; gap: 18px;
     font-family: var(--mono);
-    font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 5px 8px; border-radius: 4px;
+    font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+  }
+  .pie-scenario .ps-active-num {
+    color: var(--brass-2); font-weight: 800; letter-spacing: 0.32em;
+  }
+  .pie-scenario .ps-active-stage { color: var(--sail-dim); }
+  .pie-scenario .ps-active-hed {
+    font-family: var(--display);
+    font-size: clamp(36px, 4.8vw, 60px); line-height: 1.04;
+    color: var(--sail); letter-spacing: 0.005em;
+    max-width: 720px;
+  }
+  .pie-scenario .ps-active-body {
+    font-size: 17px; line-height: 1.55; color: var(--sail);
+    max-width: 640px;
+  }
+  .pie-scenario .ps-active-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;
+  }
+  .pie-scenario .ps-active-tag {
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 7px 11px; border-radius: 4px; font-weight: 600;
     border: 1px solid var(--lagoon-2); color: var(--sail);
     background: rgba(74, 124, 138, 0.18);
   }
-  .pie-scenario .ps-tag.hot {
-    border-color: var(--brass); color: var(--sail-2);
-    background: rgba(200, 169, 106, 0.22);
+  .pie-scenario .ps-active-tag.hot {
+    border-color: var(--brass-2); color: var(--sail-2);
+    background: rgba(200, 169, 106, 0.28);
   }
 
-  .pie-scenario .ps-beat[data-state="active"] {
-    border-color: var(--brass);
-    background: rgba(200, 169, 106, 0.06);
-    box-shadow: 0 0 0 1px rgba(200, 169, 106, 0.4), 0 10px 36px rgba(0, 0, 0, 0.18);
+  .pie-scenario .ps-spine {
+    display: flex; flex-direction: column;
+    padding-left: 28px;
+    border-left: 1px solid var(--sail-hair);
   }
-  .pie-scenario .ps-beat[data-state="done"] { opacity: 0.55; }
-  .pie-scenario .ps-beat[data-state="upcoming"] { opacity: 0.32; }
+  @media (max-width: 900px) {
+    .pie-scenario .ps-spine { padding-left: 0; border-left: 0; border-top: 1px solid var(--sail-hair); padding-top: 12px; }
+  }
+  .pie-scenario .ps-spine-item {
+    display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--sail-hair);
+    opacity: 0.4;
+    cursor: pointer;
+    background: none; border-left: 0; border-right: 0; border-top: 0;
+    text-align: left; font: inherit; color: inherit;
+    transition: opacity 0.25s, padding 0.25s;
+  }
+  .pie-scenario .ps-spine-item:last-child { border-bottom: 0; }
+  .pie-scenario .ps-spine-item:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+  .pie-scenario .ps-spine-num {
+    font-family: var(--display);
+    font-size: 18px; font-weight: 800;
+    color: var(--sail-dim);
+  }
+  .pie-scenario .ps-spine-label {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sail-dim); line-height: 1.4;
+  }
+  .pie-scenario .ps-spine-item.done { opacity: 0.62; }
+  .pie-scenario .ps-spine-item.done .ps-spine-num { color: var(--lagoon-2); }
+  .pie-scenario .ps-spine-item.active {
+    opacity: 1;
+    padding-left: 14px;
+    margin-left: -14px;
+    border-left: 2px solid var(--brass-2);
+  }
+  .pie-scenario .ps-spine-item.active .ps-spine-num { color: var(--brass-2); font-size: 22px; }
+  .pie-scenario .ps-spine-item.active .ps-spine-label { color: var(--sail); }
 
+  /* Quote */
   .pie-scenario .ps-quote {
-    padding: 18px 24px;
-    border-left: 3px solid var(--brass);
-    background: rgba(200, 169, 106, 0.06);
+    padding: 20px 28px;
+    border-left: 3px solid var(--brass-2);
+    background: rgba(200, 169, 106, 0.08);
     font-family: var(--serif); font-style: italic;
-    font-size: 16px; line-height: 1.5; color: var(--sail);
+    font-size: 17px; line-height: 1.5; color: var(--sail);
     border-radius: 0 6px 6px 0;
-    min-height: 60px; display: flex; align-items: center;
-    margin-bottom: 24px;
+    min-height: 64px; display: flex; align-items: center;
+    margin-bottom: 28px;
   }
 
+  /* Pillars — taller, bolder */
   .pie-scenario .ps-pillars {
     display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   @media (max-width: 900px) {
     .pie-scenario .ps-pillars { grid-template-columns: repeat(4, 1fr); }
@@ -864,33 +908,41 @@
   .pie-scenario .ps-pill {
     text-align: center;
     font-family: var(--mono);
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 10px 6px; border-radius: 6px;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 8px; border-radius: 6px;
     border: 1px solid var(--sail-hair);
     color: var(--sail-fade);
-    background: transparent;
-    transition: all 0.25s;
+    background: rgba(244, 237, 224, 0.02);
+    transition: all 0.3s;
     font-weight: 600;
   }
   .pie-scenario .ps-pill.active {
     border-color: var(--lagoon-2); color: var(--sail);
-    background: rgba(74, 124, 138, 0.18);
+    background: rgba(74, 124, 138, 0.22);
+    box-shadow: 0 0 0 1px rgba(74, 124, 138, 0.3);
   }
   .pie-scenario .ps-pill.hot {
-    border-color: var(--brass); color: var(--sail-2);
-    background: rgba(200, 169, 106, 0.22);
+    border-color: var(--brass-2); color: var(--sail-2);
+    background: rgba(200, 169, 106, 0.34);
+    box-shadow: 0 0 0 1px rgba(212, 184, 122, 0.55), 0 0 22px rgba(212, 184, 122, 0.24);
+    font-weight: 700;
   }
 
-  .pie-scenario .ps-dots {
-    display: flex; justify-content: center; gap: 10px; margin-top: 8px;
-  }
-  .pie-scenario .ps-dot {
-    width: 9px; height: 9px; border-radius: 50%;
+  /* Progress rule */
+  .pie-scenario .ps-progress {
+    height: 2px;
     background: var(--sail-hair);
-    border: 0; padding: 0; cursor: pointer;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
   }
-  .pie-scenario .ps-dot.active { background: var(--brass); }
-  .pie-scenario .ps-dot.done { background: var(--lagoon-2); }
+  .pie-scenario .ps-progress-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--lagoon-2), var(--brass-2));
+    border-radius: 2px;
+    width: 25%;
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
 </style>
 
 <script>
@@ -919,23 +971,26 @@
   ];
   const PILLARS = ["Athletics","Leadership","Education","Wellness","Cultural Connection","Business","Legal & Financial","Relocation & Mentorship"];
 
-  const beatsEl = document.getElementById("ps-beats");
+  const spineEl = document.getElementById("ps-spine");
   const quoteEl = document.getElementById("ps-quote");
   const pillarsEl = document.getElementById("ps-pillars");
-  const dotsEl = document.getElementById("ps-dots");
-  if (!beatsEl) return;
+  const tagsEl = document.getElementById("ps-active-tags");
+  const progressEl = document.getElementById("ps-progress-fill");
+  const numEl = document.getElementById("ps-active-num");
+  const stageEl = document.getElementById("ps-active-stage");
+  const hedEl = document.getElementById("ps-active-hed");
+  const bodyEl = document.getElementById("ps-active-body");
+  if (!spineEl) return;
 
   BEATS.forEach((b, i) => {
-    const tags = b.tags.map(t => `<span class="ps-tag${t.hot?" hot":""}">${t.label}</span>`).join("");
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "ps-beat";
-    btn.dataset.beat = i;
-    btn.dataset.state = "upcoming";
+    btn.className = "ps-spine-item";
+    btn.dataset.spine = i;
     btn.setAttribute("role", "tab");
-    btn.innerHTML = `<div class="ps-num">BEAT ${b.num}</div><div class="ps-stage">${b.stage}</div><div class="ps-hed">${b.hed}</div><div class="ps-body">${b.body}</div><div class="ps-tags">${tags}</div>`;
+    btn.innerHTML = `<div class="ps-spine-num">${b.num}</div><div class="ps-spine-label">${b.stage}</div>`;
     btn.addEventListener("click", () => { setBeat(i); pauseAuto(); });
-    beatsEl.appendChild(btn);
+    spineEl.appendChild(btn);
   });
 
   PILLARS.forEach((p, i) => {
@@ -946,37 +1001,37 @@
     pillarsEl.appendChild(el);
   });
 
-  BEATS.forEach((_, i) => {
-    const d = document.createElement("button");
-    d.type = "button";
-    d.className = "ps-dot";
-    d.dataset.dot = i;
-    d.setAttribute("aria-label", "Go to beat " + (i+1));
-    d.addEventListener("click", () => { setBeat(i); pauseAuto(); });
-    dotsEl.appendChild(d);
-  });
-
   function setBeat(idx) {
-    beatsEl.querySelectorAll(".ps-beat").forEach(el => {
-      const i = Number(el.dataset.beat);
-      el.dataset.state = i < idx ? "done" : i === idx ? "active" : "upcoming";
+    const b = BEATS[idx];
+
+    numEl.textContent = b.num;
+    stageEl.textContent = b.stage;
+    hedEl.textContent = b.hed;
+    bodyEl.textContent = b.body;
+    quoteEl.textContent = "“" + b.quote + "”";
+
+    tagsEl.innerHTML = b.tags.map(t =>
+      `<span class="ps-active-tag${t.hot ? " hot" : ""}">${t.label}</span>`
+    ).join("");
+
+    spineEl.querySelectorAll(".ps-spine-item").forEach(el => {
+      const i = Number(el.dataset.spine);
+      el.classList.remove("active","done");
+      if (i < idx) el.classList.add("done");
+      else if (i === idx) el.classList.add("active");
       el.setAttribute("aria-selected", i === idx ? "true" : "false");
     });
-    quoteEl.textContent = "“" + BEATS[idx].quote + "”";
-    const hot = new Set(BEATS[idx].pillarsHot);
-    const active = new Set(BEATS[idx].pillarsActive);
+
+    const hot = new Set(b.pillarsHot);
+    const active = new Set(b.pillarsActive);
     pillarsEl.querySelectorAll(".ps-pill").forEach(el => {
       const i = Number(el.dataset.pillar);
       el.classList.remove("active","hot");
       if (hot.has(i)) el.classList.add("hot");
       else if (active.has(i)) el.classList.add("active");
     });
-    dotsEl.querySelectorAll(".ps-dot").forEach(el => {
-      const i = Number(el.dataset.dot);
-      el.classList.remove("active","done");
-      if (i < idx) el.classList.add("done");
-      else if (i === idx) el.classList.add("active");
-    });
+
+    progressEl.style.width = (((idx + 1) / BEATS.length) * 100) + "%";
   }
 
   // Auto-rotate
@@ -1010,12 +1065,9 @@
     pausedUntil = Date.now() + PAUSE_AFTER_CLICK;
   }
 
-  // Track currentBeat when user clicks beats/dots
-  beatsEl.querySelectorAll(".ps-beat").forEach(el => {
-    el.addEventListener("click", () => { currentBeat = Number(el.dataset.beat); });
-  });
-  dotsEl.querySelectorAll(".ps-dot").forEach(el => {
-    el.addEventListener("click", () => { currentBeat = Number(el.dataset.dot); });
+  // Track currentBeat when user clicks a spine item
+  spineEl.querySelectorAll(".ps-spine-item").forEach(el => {
+    el.addEventListener("click", () => { currentBeat = Number(el.dataset.spine); });
   });
 
   if ("IntersectionObserver" in window && sectionEl) {

@@ -1,15 +1,12 @@
 {
   "name": "pie-scenario",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Animated scenario slide for PIE (Pacific Island Ecosystem)",
+  "description": "Animated scenario slide for PIE (Pacific Island Ecosystem) — MP4 with crossfades",
   "scripts": {
     "capture": "node capture.js"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
-    "gifencoder": "^2.0.1",
-    "pngjs": "^7.0.0",
     "puppeteer": "^22.0.0"
   }
 }
