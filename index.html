@@ -934,7 +934,7 @@
     btn.dataset.state = "upcoming";
     btn.setAttribute("role", "tab");
     btn.innerHTML = `<div class="ps-num">BEAT ${b.num}</div><div class="ps-stage">${b.stage}</div><div class="ps-hed">${b.hed}</div><div class="ps-body">${b.body}</div><div class="ps-tags">${tags}</div>`;
-    btn.addEventListener("click", () => setBeat(i));
+    btn.addEventListener("click", () => { setBeat(i); pauseAuto(); });
     beatsEl.appendChild(btn);
   });
 
@@ -952,7 +952,7 @@
     d.className = "ps-dot";
     d.dataset.dot = i;
     d.setAttribute("aria-label", "Go to beat " + (i+1));
-    d.addEventListener("click", () => setBeat(i));
+    d.addEventListener("click", () => { setBeat(i); pauseAuto(); });
     dotsEl.appendChild(d);
   });
 
@@ -978,6 +978,62 @@
       else if (i === idx) el.classList.add("active");
     });
   }
+
+  // Auto-rotate
+  let currentBeat = 0;
+  let timer = null;
+  let pausedUntil = 0;
+  const INTERVAL = 5000;
+  const PAUSE_AFTER_CLICK = 15000;
+  const sectionEl = document.getElementById("scenario");
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let inView = false;
+
+  function setBeatAndTrack(idx) {
+    currentBeat = idx;
+    setBeat(idx);
+  }
+
+  function tick() {
+    if (Date.now() < pausedUntil) return;
+    setBeatAndTrack((currentBeat + 1) % BEATS.length);
+  }
+
+  function startAuto() {
+    if (timer || prefersReduced) return;
+    timer = setInterval(tick, INTERVAL);
+  }
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+  function pauseAuto() {
+    pausedUntil = Date.now() + PAUSE_AFTER_CLICK;
+  }
+
+  // Track currentBeat when user clicks beats/dots
+  beatsEl.querySelectorAll(".ps-beat").forEach(el => {
+    el.addEventListener("click", () => { currentBeat = Number(el.dataset.beat); });
+  });
+  dotsEl.querySelectorAll(".ps-dot").forEach(el => {
+    el.addEventListener("click", () => { currentBeat = Number(el.dataset.dot); });
+  });
+
+  if ("IntersectionObserver" in window && sectionEl) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        inView = e.isIntersecting;
+        if (inView) startAuto(); else stopAuto();
+      });
+    }, { threshold: 0.3 });
+    io.observe(sectionEl);
+  } else {
+    startAuto();
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopAuto();
+    else if (inView) startAuto();
+  });
 
   setBeat(0);
 })();
