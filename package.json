@@ -7,6 +7,9 @@
     "capture": "node capture.js"
   },
   "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "devDependencies": {
     "puppeteer": "^22.0.0"
   }
 }
