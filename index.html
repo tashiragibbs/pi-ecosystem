@@ -32,6 +32,7 @@
     --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin: 0; padding: 0; background: var(--abyss); color: var(--sail); font-family: var(--sans); }
   body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   img, svg { display: block; max-width: 100%; }
@@ -548,10 +549,10 @@
     <div class="hero-micro" style="text-align: center">Launching · American Samoa Pilot Activation June 2026</div>
 
     <div class="btn-row" style="justify-content: center">
-      <button class="btn btn-primary">
+      <a href="#what" class="btn btn-primary" style="display:inline-flex;align-items:center;">
         Explore the Vision
         <svg class="arrow" viewBox="0 0 24 10"><path d="M 1 5 L 22 5 M 17 1 L 22 5 L 17 9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
-      </button>
+      </a>
       <a href="/sponsor.html" class="btn btn-ghost" style="display:inline-flex;align-items:center;">Become a Founding Member</a>
     </div>
   </div>
