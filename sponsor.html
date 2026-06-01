@@ -54,6 +54,10 @@
   .nav-inner { display: flex; justify-content: space-between; align-items: center; }
   .brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--sail); }
   .brand .b-mark { color: var(--brass); }
+  @media (max-width: 720px) {
+    .brand { font-size: 11px; letter-spacing: 0.22em; line-height: 1.4; }
+    .brand .b-mark { display: block; }
+  }
   .nav-cta {
     border: 1px solid var(--sail); padding: 9px 16px;
     font-family: var(--sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
