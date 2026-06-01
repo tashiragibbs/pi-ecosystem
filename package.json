@@ -2,7 +2,7 @@
   "name": "pie-scenario",
   "version": "2.0.0",
   "private": true,
-  "description": "Animated scenario slide for PIE (Pacific Island Ecosystem) — MP4 with crossfades",
+  "description": "Animated scenario slide for PIE (Pacific Islander Ecosystem) — MP4 with crossfades",
   "scripts": {
     "capture": "node capture.js"
   },
