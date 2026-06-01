@@ -136,16 +136,18 @@
   @media (max-width: 720px) {
     .lockup {
       grid-template-columns: auto auto 1fr;
-      gap: 6px 14px;
-      align-items: start;
+      gap: 4px 14px;
+      align-items: stretch;
       margin-bottom: 24px;
     }
-    .lockup-divider { height: 52px; }
-    .lockup-titlewrap { gap: 8px; }
+    .lockup-chevs { align-self: center; }
+    .lockup-divider { height: auto; align-self: stretch; }
+    .lockup-titlewrap { gap: 8px; align-self: start; }
     .lockup-num {
       grid-column: 3;
-      padding: 8px 14px;
+      padding: 0 14px;
       min-width: 64px;
+      min-height: 28px;
       align-self: start;
     }
   }
