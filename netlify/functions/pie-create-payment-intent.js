@@ -25,9 +25,9 @@ const TIER_AMOUNTS = {
 };
 
 const TIER_LABELS = {
-  supporter: 'PIE Pilot Supporter',
-  founding:  'PIE Founding Coalition Member',
-  custom:    'PIE Custom Sponsorship',
+  supporter: 'Pacific Islander Ecosystem Pilot Supporter',
+  founding:  'Pacific Islander Ecosystem Founding Coalition Member',
+  custom:    'Pacific Islander Ecosystem Custom Sponsorship',
 };
 
 const CUSTOM_MIN_CENTS = 25000;     // $250.00
@@ -81,7 +81,7 @@ exports.handler = async (event) => {
       amount,
       currency: 'usd',
       receipt_email: email,
-      statement_descriptor_suffix: 'PIE SPONSOR',
+      statement_descriptor_suffix: 'PI ECO SPNSR',
       description: TIER_LABELS[tier],
       metadata: {
         initiative:      'pie',
